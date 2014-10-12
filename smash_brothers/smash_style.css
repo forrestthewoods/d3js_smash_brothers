@@ -1,0 +1,27 @@
+body {
+    font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.rank_line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+
+    /* Blend changes over time */
+    transition: stroke .5s ease-out,
+                stroke-opacity .5s ease-out;
+}
+
+.hover_line {
+    fill: none;
+    opacity: 0;
+    stroke: green;
+    stroke-width: 10px;
+}

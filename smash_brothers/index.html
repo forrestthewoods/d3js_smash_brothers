@@ -1,39 +1,12 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 
-<style>
-body {
-    font: 10px sans-serif;
-}
-
-.axis path,
-.axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-}
-
-.rank_line {
-    fill: none;
-    stroke: steelblue;
-    stroke-width: 1.5px;
-
-    /* Blend Changes over time */
-    transition: stroke .5s ease-out,
-                stroke-opacity .5s ease-out;
-}
-
-.hover_line {
-    fill: none;
-    opacity: 0;
-    stroke: green;
-    stroke-width: 10px;
-}
-
-</style>
+<head>
+    <link rel="stylesheet" type="text/css" href="smash_style.css">
+</head>
 
 <body>
     <script src="../lib/d3/d3.min.js"></script>
     <script src="../lib/colorbrewer/colorbrewer.js"></script>
-    <script src="smash_rankings.js"></script>
+    <script src="smash_rankings_chart.js"></script>
 </body>
