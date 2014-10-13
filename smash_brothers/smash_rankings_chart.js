@@ -1,4 +1,4 @@
-function build_smash_chart(group) {
+function build_smash_chart(data_file, group) {
 
     // Define size of graph area
     var margin = {top: 30, right: 80, bottom: 80, left: 110},
@@ -45,7 +45,7 @@ function build_smash_chart(group) {
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     // Load and process json file
-    d3.json("smash_data.json", function(error, data) {
+    d3.json(data_file, function(error, data) {
 
         // Add one tick per date entry to x-axis
         xAxis.ticks(data.dates.length)
