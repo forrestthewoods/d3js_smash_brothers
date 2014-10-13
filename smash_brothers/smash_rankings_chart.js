@@ -109,7 +109,7 @@ function build_smash_chart(select_target, group) {
         .append("text")
             .attr("y", -14)
             .style("text-anchor", "left")
-            .text("ranking");
+            .text("Ranking");
 
     // Bind all_rankings data to DOM
     var character_ranks = svg.selectAll(".character_ranks")
