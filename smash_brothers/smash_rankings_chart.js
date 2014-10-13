@@ -1,4 +1,4 @@
-function build_smash_chart(group) {
+function build_smash_chart(select_target, group) {
 
     // Define size of graph area
     var margin = {top: 30, right: 80, bottom: 80, left: 110},
@@ -30,7 +30,7 @@ function build_smash_chart(group) {
         .y(function(d) { return y(d.ranking); });
 
     // Outer container SVG element to enable responsive magic
-    var svg_root = d3.select("body").append("svg")
+    var svg_root = d3.select(select_target).append("svg")
         .attr("viewBox", "0 0 960 500")
         .attr("preserveAspectRatio", "none");
 
