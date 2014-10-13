@@ -29,10 +29,18 @@ function build_smash_chart(group) {
         .x(function(d) { return x(d.date); })
         .y(function(d) { return y(d.ranking); });
 
-    // SVG that will behave as "root" for D3 operations
-    var svg = d3.select("body").append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
+    // Outer container SVG element to enable responsive magic
+    var svg_root = d3.select("body").append("svg")
+        .attr("viewBox", "0 0 960 500")
+        .attr("preserveAspectRatio", "none");
+
+    // SVG that will be used for D3 operations
+    var svg = svg_root.append("svg")
+    //var svg = d3.select("body").append("svg")
+            //.attr("width", width + margin.left + margin.right)
+            //.attr("height", height + margin.top + margin.bottom)
+            //.attr("viewBox", "0 0 960 500")
+            //.attr("preserveAspectRatio", "xMinYMid meet")
         .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -172,3 +180,5 @@ function build_smash_chart(group) {
             paired_lines[i].hover = hover_lines[i];
     });
 }
+
+

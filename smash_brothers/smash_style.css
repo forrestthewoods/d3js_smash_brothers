@@ -7,12 +7,14 @@ body {
     fill: none;
     stroke: #000;
     shape-rendering: crispEdges;
+    vector-effect: non-scaling-stroke;
 }
 
 .rank_line {
     fill: none;
     stroke: steelblue;
     stroke-width: 1.5px;
+    vector-effect: non-scaling-stroke;
 
     /* Blend changes over time */
     transition: stroke .5s ease-out,
