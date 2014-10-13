@@ -177,8 +177,10 @@ function build_smash_chart(group) {
         paired_lines[i].hover = hover_lines[i];
 }
 
-
+// Data for chart
 var smash_data = {
+
+    // Non-even distribution of dates represented by ranks
     "dates" : [
         "Oct '02",
         "Dec '02",
@@ -194,6 +196,7 @@ var smash_data = {
         "July '13"
     ],
 
+    // Groupings of characters to enable display of subsets
     "groups":{
         "all" : [ "Sheik", "Falco", "Fox", "Marth", "Samus", "Dr. Mario",
                   "Ganondorf", "Young Link", "Roy", "Kirby", "Mr. Game & Watch",
@@ -214,6 +217,7 @@ var smash_data = {
                     "Captain Falcon", "Donkey Kong", "Mew Two"]
     },
 
+    // Per character data
     "characters" : [
         {
             "name":"Sheik",
