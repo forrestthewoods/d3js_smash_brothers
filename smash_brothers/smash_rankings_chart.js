@@ -31,7 +31,7 @@ function build_smash_chart(select_target, group) {
 
     // Outer container SVG element to enable responsive magic
     var svg_root = d3.select(select_target).append("svg")
-        .attr("viewBox", "0 0 960 500")
+        .attr("viewBox", "0 0 960 460")
         .attr("preserveAspectRatio", "none");
 
     // SVG that will be used for D3 operations
