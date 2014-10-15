@@ -209,7 +209,7 @@ var smash_data = {
         
         "steady": [ "Samus", "Dr. Mario", "Ganondorf", "Mr. Game & Watch", "Pichu", "Bowser" ],
 
-        "journeyman" : [ "Pikachu", "Link", "Young Link", "Yoshi", "Roy" ],
+        "journeymen" : [ "Pikachu", "Link", "Young Link", "Yoshi", "Roy" ],
 
         "busts" : [ "Ness", "Yoshi", "Mario", "Zelda", "Luigi" ],
 
