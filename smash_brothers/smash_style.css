@@ -23,3 +23,7 @@
     stroke: green;
     stroke-width: 10px;
 }
+
+.body {
+    font-family: Verdana, Geneva, sans-serif;
+}
