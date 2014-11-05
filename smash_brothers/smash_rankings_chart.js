@@ -1,4 +1,15 @@
-function build_smash_chart(select_target, group) {
+// Utility function for integrating with Ghost blog
+// Should eventually be moved to it's own repo
+function inject_css(css_path) {
+    var css_node = document.createElement('link');
+    css_node.rel = 'stylesheet';
+    css_node.type = 'text/css';
+    //css_node.href = "//rawgit.com/forrestthewoods/d3js_examples/master/smash_brothers/smash_style.css";
+    css_node.href = css_path;
+    document.getElementsByTagName("head")[0].appendChild(css_node);
+}
+
+function build_smash_power_rankings(select_target, group) {
 
     // Define size of graph area
     var margin = {top: 30, right: 80, bottom: 80, left: 110},
