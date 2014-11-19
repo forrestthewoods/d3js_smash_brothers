@@ -3,7 +3,6 @@
 
 <head>
     <script type="text/javascript" src="../lib/d3/d3.min.js"></script>
-    <script type="text/javascript" src="../lib/colorbrewer/colorbrewer.js"></script>
     <script type="text/javascript" src="smash_rankings_chart.js"></script>
 </head>
 
@@ -11,8 +10,8 @@
     <div class="svg_target"></div>
     <script>
         inject_css("smash_style.css");
-        build_smash_power_rankings(".svg_target", "gamecube", "all");
-        build_smash_power_rankings(".svg_target", "n64", "all");
-        build_smash_tier_list(".svg_target", "gamecube", "all");
+        build_smash_power_rankings(".svg_target", 300, "n64", "all");
+        build_smash_power_rankings(".svg_target", 500, "gamecube", "all");
+        build_smash_power_rankings(".svg_target", 650, "wii", "all");
     </script>
 </body>
