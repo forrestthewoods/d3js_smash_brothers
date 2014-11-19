@@ -539,7 +539,7 @@ var smash_data = {
             { "name":"Jigglypuff", "rankings":[34,35,34,34,35,36,35,36] },
             { "name":"Ganondorf", "rankings":[35,36,37,37,38,38,38,38] },
             { "name":"Link", "rankings":[36,34,36,36,36,35,36,35] },
-            { "name":"Captain Falcon", "rankings":[37,37,35,32,33,34,34] },
+            { "name":"Captain Falcon", "rankings":[37,37,35,32,33,34,34,34] },
             { "name":"Zelda/Sheik", "rankings":[38,38,38,38,23,24,21,24] }
         ]
     }
