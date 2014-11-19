@@ -102,10 +102,9 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
     x.domain(x_domain);
 
     // Define y axis domain
-    var y_domain = [1, 26];
-    y_domain = [
-        d3.min(all_rankings, function(c) { return d3.min(c.values, function(v) { return v.ranking; }); }),
-        d3.max(all_rankings, function(c) { return d3.max(c.values, function(v) { return v.ranking; }); })
+    var y_domain = [
+        d3.min(smash_data_set.characters, function(c) { return d3.min(c.rankings); }),
+        d3.max(smash_data_set.characters, function(c) { return d3.max(c.rankings); })
     ];
     y.domain(y_domain);
 
