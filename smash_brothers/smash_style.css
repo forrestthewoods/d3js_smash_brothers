@@ -8,8 +8,18 @@
 
 .rank_line {
     fill: none;
-    stroke: steelblue;
     stroke-width: 1.5px;
+    vector-effect: non-scaling-stroke;
+
+    /* Blend changes over time */
+    transition: stroke .5s ease-out,
+                stroke-opacity .5s ease-out;
+}
+
+.tier_line {
+    fill: none;
+    stroke: #d3d3d3;
+    stroke-width: 1px;
     vector-effect: non-scaling-stroke;
 
     /* Blend changes over time */
