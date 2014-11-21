@@ -67,8 +67,7 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
         return colors[index];
     };
 
-    // Output format of all_rankings:
-    /*
+    /* Output format of all_rankings:
         [
             {
                 "character":"pikachu",
@@ -82,15 +81,17 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
         ]
     */
     var all_rankings = smash_data_set.characters
-        .filter(function(entry) { 
-            return smash_data_set.groups[group].indexOf(entry.name) != -1; })
-        .map(function(entry) {
+        .filter(function(char_entry) { 
+            return smash_data_set.groups[group].indexOf(char_entry.name) != -1; })
+        .map(function(char_entry) {
             return {
-                character: entry.name,
-                color: color_for_entry(entry),
-                values: entry.rankings.map(function(ranking, index){
-                    return { date: index, ranking: ranking };
-                })
+                character: char_entry.name,
+                color: color_for_entry(char_entry),
+                values: char_entry.rankings
+                    .map(function(ranking, index){
+                        return { date: index, ranking: ranking }})
+                    .filter(function(value_entry) {
+                        return value_entry.ranking != -1; })
             }
         });
 
@@ -540,7 +541,7 @@ var smash_data = {
             { "name":"Ganondorf", "rankings":[35,36,37,37,38,38,38,38] },
             { "name":"Link", "rankings":[36,34,36,36,36,35,36,35] },
             { "name":"Captain Falcon", "rankings":[37,37,35,32,33,34,34,34] },
-            { "name":"Zelda/Sheik", "rankings":[38,38,38,38,23,24,21,24] }
+            { "name":"Zelda/Sheik", "rankings":[-1,-1,-1,-1,23,24,21,24] }
         ]
     }
 }
