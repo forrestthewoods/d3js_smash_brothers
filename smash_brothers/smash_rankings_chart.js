@@ -46,12 +46,14 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
         .tickFormat(function(d) { return smash_data_set.dates[d]; });
 
 
-    // Utility to pick a color of one does not exist
+    // Utility to return color stored in entry or pick one if it's not defined
+    // Pretty hacky and special cased code. :( Oh well!
     var color_for_entry = function(entry) {
         if (entry.hasOwnProperty('color'))
             return entry.color;
 
-        // Set of 26 colors that works fairly well together. Better than any colorbrewer.js set at least!
+        // Set of 26 colors that works fairly well together. 
+        // Colorbrewer.js defines a lot of color sets, but we need more colors
         var ssbm_colors = [ 
             "#F0A3FF","#0075DC","#FFA405","#4C005C","#FF0010","#8F7C00","#990000","#2BCE48","#FFCC99",
             "#808080","#5EF1F2","#9DCC00","#ffed6f","#00998F","#003380","#94FFB5","#fb9a99","#FF5005",
@@ -59,7 +61,7 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
         ]; 
 
         var colors = ssbm_colors;
-        var index = smash_data_set.groups[group].indexOf(entry.name);
+        var index = smash_data_set.groups[group].indexOf(entry.name);   // This is the hacky part :(
         if (index < 0)
             index = 0;
         else if (index >= colors.length)
@@ -82,20 +84,21 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
     */
     var all_rankings = smash_data_set.characters
         .filter(function(char_entry) { 
-            return smash_data_set.groups[group].indexOf(char_entry.name) != -1; })
-        .map(function(char_entry) {
+            return smash_data_set.groups[group].indexOf(char_entry.name) != -1; })  // filter out chars not in group
+        .map(function(char_entry, index, arr) {
             return {
                 character: char_entry.name,
                 color: color_for_entry(char_entry),
                 values: char_entry.rankings
                     .map(function(ranking, index){
-                        return { date: index, ranking: ranking }})
+                        return { date: index, ranking: ranking }})  // transform into d3 friendly format
                     .filter(function(value_entry) {
-                        return value_entry.ranking != -1; })
+                        return value_entry.ranking != -1; }) // filter out entries where rank is -1
             }
         });
 
     // Remember, domain->range. Define x axis domain
+    // Ouput: [earliest_date, latest_date]
     var x_domain = [
         d3.min(all_rankings, function(c) { return d3.min(c.values, function(v) { return v.date; }); }),
         d3.max(all_rankings, function(c) { return d3.max(c.values, function(v) { return v.date; }); })
@@ -103,18 +106,17 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
     x.domain(x_domain);
 
     // Define y axis domain
-    var y_domain = [
-        d3.min(smash_data_set.characters, function(c) { return d3.min(c.rankings); }),
-        d3.max(smash_data_set.characters, function(c) { return d3.max(c.rankings); })
-    ];
+    // Output: [1, highest rank in unfiltered character dataset (varies by game version)]
+    var y_domain = [1, d3.max(smash_data_set.characters, function(c) { return d3.max(c.rankings); }) ];
     y.domain(y_domain);
-
+    console.log(y_domain);
 
 
     // Define domain->range for character_name -> color
     var colors = d3.scale.ordinal()
                     .domain(smash_data_set.characters.map(function(entry) { return entry.name; }))
                     .range(smash_data_set.characters.map(function(entry) { return color_for_entry(entry);} ));
+
 
 
     // Setup x-axis
@@ -171,10 +173,17 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
             }
         });
 
-    // Add text for each character
+    // Add text label for each character
+    var offset = 0;
     character_ranks.append("text")
             .datum(function(d) { return {name: d.character, value: d.values[0]}; })
-            .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.ranking) + ")"; })
+            .attr("transform", function(d) {
+                // Calculate index along y-axis to display name.
+                // Default to align with line position for x=0
+                // But move to end of list if line doesn't start until x > 0
+                var y_index = ((d.value.date == 0 )? d.value.ranking : (all_rankings.length + offset--));
+                return "translate(" + x(0) + "," + y(y_index) + ")"; 
+            })
             .attr("x", -10)
             .attr("dy", ".35em")
             .style("text-anchor", "end")
