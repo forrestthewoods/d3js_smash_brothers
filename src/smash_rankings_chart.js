@@ -171,7 +171,7 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
                 else {
                     // Not hovered
                     d3.select(paired_lines[i].color).style("stroke", "#d3d3d3");
-                }
+            } 
             } 
         })
         .on("mouseout", function(d) { 
