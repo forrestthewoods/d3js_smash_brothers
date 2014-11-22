@@ -109,7 +109,6 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
     // Output: [1, highest rank in unfiltered character dataset (varies by game version)]
     var y_domain = [1, d3.max(smash_data_set.characters, function(c) { return d3.max(c.rankings); }) ];
     y.domain(y_domain);
-    console.log(y_domain);
 
 
     // Define domain->range for character_name -> color
@@ -155,12 +154,25 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
         .attr("d", function(d) { return line(d.values); })
         .on("mouseover", function(d) { 
 
-            // Increase hovered line size. Set others to grey
             for (var i = 0; i < paired_lines.length; ++i) {
-                if (paired_lines[i].hover == this)
-                    d3.select(paired_lines[i].color).style("stroke-width", "3.5px");
-                else 
+                
+                // Hovered / Not Hovered
+                if (paired_lines[i].hover == this) {
+
+                    // Grab the visible line with color associated with "this" which is a fat, invisible line
+                    var colored_line = d3.select(paired_lines[i].color);
+
+                    // Move colored line to front so it renders on top
+                    var node = colored_line.node();
+                    node.parentNode.parentNode.appendChild(node.parentNode);
+                    
+                    // Increase hovered line width
+                    colored_line.style("stroke-width", "3.5px");
+                }
+                else {
+                    // Not hovered
                     d3.select(paired_lines[i].color).style("stroke", "#d3d3d3");
+                }
             } 
         })
         .on("mouseout", function(d) { 
