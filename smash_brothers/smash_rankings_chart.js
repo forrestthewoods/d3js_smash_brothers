@@ -153,7 +153,6 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
         .attr("class", "hover_line")
         .attr("d", function(d) { return line(d.values); })
         .on("mouseover", function(d) { 
-
             for (var i = 0; i < paired_lines.length; ++i) {
                 
                 // Hovered / Not Hovered
@@ -176,11 +175,14 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
             } 
         })
         .on("mouseout", function(d) { 
-
-            // Revert line size and color
             for (var i = 0; i < paired_lines.length; ++i) {
+
                 var color_line = d3.select(paired_lines[i].color);
-                color_line.style("stroke-width", "1.5px");
+                
+                // Revert to default width
+                color_line.style("stroke-width", "1.5px"); // Would like to grab this data from css
+
+                // Revert color change
                 color_line.style("stroke", all_rankings[i].color);
             }
         });
