@@ -201,7 +201,11 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
             .attr("x", -10)
             .attr("dy", ".35em")
             .style("text-anchor", "end")
-            .text(function(d) { return d.name; });
+            .text(function(d) { return d.name; })
+            .on("mouseover", function(d) {
+                var char_name = d3.select(this)[0][0].textContent;
+                console.log(char_name);
+            });
 
 
     // Pair up the colored line and hover line in an object per character 
