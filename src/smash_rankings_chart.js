@@ -170,33 +170,34 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
     // Add text label for each character
     var offset = 0;
     character_ranks.append("text")
-            .datum(function(d) { return {name: d.character, value: d.values[0]}; })
-            .attr("transform", function(d) {
-                // Calculate index along y-axis to display name.
-                // Default to align with line position for x=0
-                // But move to end of list if line doesn't start until x > 0
-                var y_index = ((d.value.date == 0 )? d.value.ranking : (all_rankings.length + offset--));
-                return "translate(" + x(0) + "," + y(y_index) + ")"; 
-            })
-            .attr("x", -10)
-            .attr("dy", ".35em")
-            .style("text-anchor", "end")
-            .text(function(d) { return d.name; })
-            .on("mouseover", function(d) {
-                var char_name = d3.select(this)[0][0].textContent;
+        .attr("class", "char_label")
+        .datum(function(d) { return {name: d.character, value: d.values[0]}; })
+        .attr("transform", function(d) {
+            // Calculate index along y-axis to display name.
+            // Default to align with line position for x=0
+            // But move to end of list if line doesn't start until x > 0
+            var y_index = ((d.value.date == 0 )? d.value.ranking : (all_rankings.length + offset--));
+            return "translate(" + x(0) + "," + y(y_index) + ")"; 
+        })
+        .attr("x", -10)
+        .attr("dy", ".35em")
+        .style("text-anchor", "end")
+        .text(function(d) { return d.name; })
+        .on("mouseover", function(d) {
+            var char_name = d3.select(this)[0][0].textContent;
 
-                // Highlight mouse over target, fade everything else
-                for (var i = 0; i < line_bundles.length; ++i) {
-                    if (line_bundles[i].character == char_name)
-                        highlightBundle(line_bundles[i]);
-                    else
-                        fadeBundle(line_bundles[i]);
-                }
-            })
-            .on("mouseout", function(d) {
-                // Reset all highlights/fades
-                line_bundles.forEach(function(bundle, index) { resetBundle(bundle, index); });
-            });
+            // Highlight mouse over target, fade everything else
+            for (var i = 0; i < line_bundles.length; ++i) {
+                if (line_bundles[i].character == char_name)
+                    highlightBundle(line_bundles[i]);
+                else
+                    fadeBundle(line_bundles[i]);
+            }
+        })
+        .on("mouseout", function(d) {
+            // Reset all highlights/fades
+            line_bundles.forEach(function(bundle, index) { resetBundle(bundle, index); });
+        });
 
 
     // Pair up the colored line and hover line in an object per character 
@@ -205,21 +206,35 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
             {
                 character = "Pikachu",
                 color = SVGPathElement,
-                hover = SVGPathElement
+                hover = SVGPathElement,
+                label = SVGTextElement
             },
             {
                 character = "Jigglypuff",
                 color = SVGPathElement,
                 hover = SVGPathElement
+                label = SVGTextElement
             },
             ...  
         ]
     */
+    
+    // Color
     var line_bundles = svg.selectAll(".rank_line")[0].map( function(entry) { return { color: entry } } );
+    
+    // Hover
     var hover_lines = svg.selectAll(".hover_line")[0];
     hover_lines.forEach(function(hover_line, index) { line_bundles[index].hover = hover_line; });
+    
+    // Character Name
     line_bundles.forEach(function(bundle_entry, index) { bundle_entry.character = all_rankings[index].character; });
 
+    // Character Lebel
+    var labels = svg.selectAll(".char_label")[0];
+    labels.forEach(function(label, index) { line_bundles[index].label = label; });
+
+
+    // Utility function to update elements within a bundle to a highlight state
     var highlightBundle = function(bundle) {
         var colored_line = d3.select(bundle.color);
 
@@ -229,13 +244,19 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
 
         // Increase hovered line width
         colored_line.style("stroke-width", "3.5px");
+
+        // Make label 'pop'
+        d3.select(bundle.label).style("font-weight", "bold");
+        d3.select(bundle.label).style("font-size", "1.1rem");
     };
 
+    // Utility function to update elements within a bundle to a faded state
     var fadeBundle = function(bundle) {
         // Fade to grey
         d3.select(bundle.color).style("stroke", "#d3d3d3");
     };
 
+    // Utility function to update elements within a bundle to their default state
     var resetBundle = function(bundle, index) {
         var colored_line = d3.select(bundle.color);
 
@@ -244,5 +265,9 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
 
         // Reset color change
         colored_line.style("stroke", all_rankings[index].color);
+        
+        // Reset label
+        d3.select(bundle.label).style("font-weight", "");
+        d3.select(bundle.label).style("font-size", "1.0rem");
     };
 }

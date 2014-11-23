@@ -6,6 +6,11 @@
     vector-effect: non-scaling-stroke;
 }
 
+.char_label {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+}
+
 .rank_line {
     fill: none;
     stroke-width: 1.5px;
