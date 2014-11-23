@@ -153,38 +153,18 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
         .attr("class", "hover_line")
         .attr("d", function(d) { return line(d.values); })
         .on("mouseover", function(d) { 
-            for (var i = 0; i < paired_lines.length; ++i) {
-                
-                // Hovered / Not Hovered
-                if (paired_lines[i].hover == this) {
 
-                    // Grab the visible line with color associated with "this" which is a fat, invisible line
-                    var colored_line = d3.select(paired_lines[i].color);
-
-                    // Move colored line to front so it renders on top
-                    var node = colored_line.node();
-                    node.parentNode.parentNode.appendChild(node.parentNode);
-                    
-                    // Increase hovered line width
-                    colored_line.style("stroke-width", "3.5px");
-                }
-                else {
-                    // Not hovered
-                    d3.select(paired_lines[i].color).style("stroke", "#d3d3d3");
-            } 
-            } 
+            // Highlight mouse over target, fade everything else
+            for (var i = 0; i < line_bundles.length; ++i) {
+                if (line_bundles[i].hover == this)
+                    highlightBundle(line_bundles[i]);
+                else 
+                    fadeBundle(line_bundles[i]);
+            }
         })
         .on("mouseout", function(d) { 
-            for (var i = 0; i < paired_lines.length; ++i) {
-
-                var color_line = d3.select(paired_lines[i].color);
-                
-                // Revert to default width
-                color_line.style("stroke-width", "1.5px"); // Would like to grab this data from css
-
-                // Revert color change
-                color_line.style("stroke", all_rankings[i].color);
-            }
+                // Reset all highlights/fades
+            line_bundles.forEach(function(bundle, index) { resetBundle(bundle, index); });
         });
 
     // Add text label for each character
@@ -204,26 +184,65 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
             .text(function(d) { return d.name; })
             .on("mouseover", function(d) {
                 var char_name = d3.select(this)[0][0].textContent;
-                console.log(char_name);
+
+                // Highlight mouse over target, fade everything else
+                for (var i = 0; i < line_bundles.length; ++i) {
+                    if (line_bundles[i].character == char_name)
+                        highlightBundle(line_bundles[i]);
+                    else
+                        fadeBundle(line_bundles[i]);
+                }
+            })
+            .on("mouseout", function(d) {
+                // Reset all highlights/fades
+                line_bundles.forEach(function(bundle, index) { resetBundle(bundle, index); });
             });
 
 
     // Pair up the colored line and hover line in an object per character 
     /*
-        Paired lines = [
+        line_bundles = [
             {
+                character = "Pikachu",
                 color = SVGPathElement,
                 hover = SVGPathElement
             },
             {
+                character = "Jigglypuff",
                 color = SVGPathElement,
                 hover = SVGPathElement
             },
             ...  
         ]
     */
-    var paired_lines = svg.selectAll(".rank_line")[0].map( function(entry) { return { color: entry } } );
+    var line_bundles = svg.selectAll(".rank_line")[0].map( function(entry) { return { color: entry } } );
     var hover_lines = svg.selectAll(".hover_line")[0];
-    for (var i = 0; i < hover_lines.length; ++i)
-        paired_lines[i].hover = hover_lines[i];
+    hover_lines.forEach(function(hover_line, index) { line_bundles[index].hover = hover_line; });
+    line_bundles.forEach(function(bundle_entry, index) { bundle_entry.character = all_rankings[index].character; });
+
+    var highlightBundle = function(bundle) {
+        var colored_line = d3.select(bundle.color);
+
+        // Move colored line to front so it renders on top
+        var node = colored_line.node();
+        node.parentNode.parentNode.appendChild(node.parentNode);
+
+        // Increase hovered line width
+        colored_line.style("stroke-width", "3.5px");
+    };
+
+    var fadeBundle = function(bundle) {
+        // Fade to grey
+        d3.select(bundle.color).style("stroke", "#d3d3d3");
+    };
+
+    var resetBundle = function(bundle, index) {
+        var colored_line = d3.select(bundle.color);
+
+        // Reset to default width
+        colored_line.style("stroke-width", "1.5px"); // Would like to grab this data from css
+
+        // Reset color change
+        colored_line.style("stroke", all_rankings[index].color);
+    };
 }
