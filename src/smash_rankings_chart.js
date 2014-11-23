@@ -452,6 +452,17 @@ var smash_data = {
                         "Sheik", "Lucas", "Ness", "Mario", "Pokemon Kid", "Samus", "Yoshi",
                         "Sonic", "Jigglypuff", "Ganondorf", "Link", "Captain Falcon", "Zelda/Sheik"
             ],
+
+            "hall_of_fame": [ "Meta Knight", "Snake", "Falco", "Marth" ],
+            
+            "steady": [ "Lucario", "Pikachu", "Toon Link", "Peach", "Sheik", "Lucas", "Ness", "Mario", 
+                        "Samus", "Yoshi", "Jugglypuff", "Ganondorf", "Link", "Captain Falcon", "Steady"],
+
+            "journeymen" : [ "Pit", "Wolf", "Luigi", "Ike", "Pokemon Kid", "Fox" ],
+
+            "busts" : [ "King Dedede", "Game & Watch", "R.O.B.", "Donkey Kong", "Zelda", "Bowser"],
+
+            "diamonds_in_the_rough" : [ "Diddy Kong", "Ice Climbers", "Olimar", "ZeroSuitSamus", "Sonic", "Zelda/Sheik"]
         },
 
         "tiers" : {
