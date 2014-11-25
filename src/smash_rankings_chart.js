@@ -167,7 +167,7 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
         });
 
     // Add text label for each character
-    var offset = 0;
+    var label_offset = 0;
     character_ranks.append("text")
         .attr("class", "char_label")
         .datum(function(d) { return {name: d.character, value: d.values[0]}; })
@@ -175,7 +175,7 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
             // Calculate index along y-axis to display name.
             // Default to align with line position for x=0
             // But move to end of list if line doesn't start until x > 0
-            var y_index = ((d.value.date == 0 )? d.value.ranking : (all_rankings.length + offset--));
+            var y_index = ((d.value.date == 0 )? d.value.ranking : (all_rankings.length + label_offset--));
             return "translate(" + x(0) + "," + y(y_index) + ")"; 
         })
         .attr("x", -10)
@@ -183,6 +183,8 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
         .style("text-anchor", "end")
         .text(function(d) { return d.name; });
         
+
+    var label_hover_offset = 0;
     character_ranks.append("rect")
         .attr("class", "char_label_hover")
         .datum(function(d) { return {name: d.character, value: d.values[0]}; })
@@ -191,11 +193,12 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
             // Calculate index along y-axis to display name.
             // Default to align with line position for x=0
             // But move to end of list if line doesn't start until x > 0
-            var y_index = ((d.value.date == 0 )? d.value.ranking : (all_rankings.length + offset--));
+            var y_index = ((d.value.date == 0 )? d.value.ranking : (all_rankings.length + label_hover_offset--));
+            console.log(d.name + " " + y_index);
             return "translate(" + x(0) + "," + (y(y_index) - (0.5*(y(1) - y(0))) + 1) + ")"; 
         })
         .attr("width", bounds.margin.left)
-        .attr("height", (y(1) - y(0) + 3))
+        .attr("height", (y(1) - y(0) + 1))
         .on("mouseover", function(d) {
             // Highlight mouse over target, fade everything else
             for (var i = 0; i < line_bundles.length; ++i) {

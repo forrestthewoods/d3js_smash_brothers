@@ -9,6 +9,9 @@
 .char_label {
     font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
+    
+    /* Prevents cursor from turning into 'I'
+    and blocking hover box cursor events */
     pointer-events: none;
 }
 
