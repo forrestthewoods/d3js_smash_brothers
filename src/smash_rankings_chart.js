@@ -1,11 +1,10 @@
-function build_smash_power_rankings(select_target, svg_height, platform, group) {
+function build_smash_power_rankings(select_target, platform, group, bounds) {
 
-    var smash_data_set = smash_data[platform]
+    var smash_data_set = smash_data[platform];
 
     // Define size of graph area
-    var margin = {top: 30, right: 80, bottom: 50, left: 110},
-            width = 960 - margin.left - margin.right,
-            height = svg_height - margin.top - margin.bottom;
+    var width = bounds.width - bounds.margin.left - bounds.margin.right;
+    var height = bounds.height - bounds.margin.top - bounds.margin.bottom;
 
     // Define X/Y range for domain->range mappings
     var x = d3.scale.linear()
@@ -33,13 +32,13 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
 
     // Outer container SVG element to enable responsive magic
     var svg_root = d3.select(select_target).append("svg")
-        .attr("viewBox", "0 0 960 " + svg_height)
+        .attr("viewBox", "0 0 " + bounds.width + " " + bounds.height)
         .attr("preserveAspectRatio", "none");
 
     // SVG that will be used for D3 operations
     var svg = svg_root.append("svg")
         .append("g")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            .attr("transform", "translate(" + bounds.margin.left + "," + bounds.margin.top + ")");
 
     // Add one tick per date entry to x-axis
     xAxis.ticks(smash_data_set.dates.length)
@@ -247,7 +246,7 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
 
         // Make label 'pop'
         d3.select(bundle.label).style("font-weight", "bold");
-        d3.select(bundle.label).style("font-size", "1.1rem");
+        d3.select(bundle.label).style("font-size", "110%");
     };
 
     // Utility function to update elements within a bundle to a faded state
@@ -261,13 +260,13 @@ function build_smash_power_rankings(select_target, svg_height, platform, group) 
         var colored_line = d3.select(bundle.color);
 
         // Reset to default width
-        colored_line.style("stroke-width", "1.5px"); // Would like to grab this data from css
+        colored_line.style("stroke-width", ""); 
 
         // Reset color change
         colored_line.style("stroke", all_rankings[index].color);
         
         // Reset label
         d3.select(bundle.label).style("font-weight", "");
-        d3.select(bundle.label).style("font-size", "1.0rem");
+        d3.select(bundle.label).style("font-size", "");
     };
 }
