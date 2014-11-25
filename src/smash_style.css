@@ -9,6 +9,12 @@
 .char_label {
     font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
+    pointer-events: none;
+}
+
+.char_label_hover {
+   opacity:0;
+   style:fill;
 }
 
 .rank_line {
