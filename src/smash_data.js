@@ -232,7 +232,9 @@ var smash_data = {
 
             "busts" : [ "King Dedede", "Game & Watch", "R.O.B.", "Donkey Kong", "Zelda", "Bowser"],
 
-            "diamonds_in_the_rough" : [ "Diddy Kong", "Ice Climbers", "Olimar", "ZeroSuitSamus", "Sonic", "Zelda/Sheik"]
+            "diamonds_in_the_rough" : [ "Diddy Kong", "Ice Climbers", "Olimar", "ZeroSuitSamus", "Sonic", "Zelda/Sheik"],
+
+            "kongs" : [ "Donkey Kong", "Diddy Kong"]
         },
 
         "tiers" : {
