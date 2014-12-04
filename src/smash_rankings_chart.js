@@ -151,6 +151,13 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
         .style("text-anchor", "middle")
         .text("Ranking");
 
+    // Setup header for highlighted character name
+    plot_group.append("text")
+        .attr("class", "char_header")
+        .attr("transform", "translate(0," + -20 + ")")
+        .style("text-anchor", "start")
+        .text("");
+
     // Bind all_rankings data to DOM
     var character_ranks = plot_group.selectAll(".character_ranks")
             .data(all_rankings)
@@ -167,6 +174,7 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
     character_ranks.append("path")
         .attr("class", "hover_line")
         .attr("d", function(d) { return line(d.values); })
+        .style("stroke", function(d) { return colors(d.character); })
         .on("mouseover", function(d) { 
 
             // Highlight mouse over target, fade everything else
@@ -178,8 +186,9 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
             }
         })
         .on("mouseout", function(d) { 
-                // Reset all highlights/fades
-            line_bundles.forEach(function(bundle, index) { resetBundle(bundle, index); });
+            // Reset all highlights/fades
+            line_bundles.forEach(function(bundle) { resetBundle(bundle); });
+            d3.select(".char_header").text("");
         });
 
     // Add text label for each character
@@ -225,7 +234,8 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
         })
         .on("mouseout", function(d) {
             // Reset all highlights/fades
-            line_bundles.forEach(function(bundle, index) { resetBundle(bundle, index); });
+            line_bundles.forEach(function(bundle) { resetBundle(bundle); });
+            d3.select(".char_header").text("");
         });
 
     // Pair up the colored line and hover line in an object per character 
@@ -276,6 +286,13 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
         // Make label 'pop'
         d3.select(bundle.label).style("font-weight", "bold");
         d3.select(bundle.label).style("font-size", "110%");
+
+        console.log(colored_line);
+        console.log(colored_line.style("stroke"));
+        // Update text header
+        d3.select(".char_header")
+            .text(bundle.character)
+            .style("fill", colored_line.style("stroke"));
     };
 
     // Utility function to update elements within a bundle to a faded state
@@ -285,14 +302,14 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
     };
 
     // Utility function to update elements within a bundle to their default state
-    var resetBundle = function(bundle, index) {
+    var resetBundle = function(bundle) {
         var colored_line = d3.select(bundle.color_line);
 
         // Reset to default width
         colored_line.style("stroke-width", ""); 
 
         // Reset color change
-        colored_line.style("stroke", all_rankings[index].color);
+        colored_line.style("stroke", d3.select(bundle.hover_line).style("stroke"));
         
         // Reset label
         d3.select(bundle.label).style("font-weight", "");

@@ -6,6 +6,11 @@
     vector-effect: non-scaling-stroke;
 }
 
+.char_header {
+    font-family: 'Open Sans', sans-serif;
+    font-size:2em;
+}
+
 .char_label {
     font-family: 'Open Sans', sans-serif;
     
