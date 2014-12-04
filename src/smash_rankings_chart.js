@@ -1,17 +1,40 @@
+
+// *** Parameters Description ***
+//
+// select_target = HTML element to append SVG to. Example: <div class="smash_svg_target"></div>
+//
+// platform = "n64", "gamecube", or "wii". Look at smash_data.js
+//
+// group = "all", "hall_of_fame", etc. Look at smash_data.js
+//
+// bounds = { 
+//     width : #
+//     height : #
+//     margin : {
+//         top : #
+//         bottom: #
+//         left: # 
+//         right : #
+//     }
+// }
+// Width/Height is size of complete chart
+// Plotting of lines occurs inside margin. 
+// Margin space is used for labeling axis ticks and lines
+
 function build_smash_power_rankings(select_target, platform, group, bounds) {
 
     var smash_data_set = smash_data[platform];
 
     // Define size of graph area
-    var width = bounds.width - bounds.margin.left - bounds.margin.right;
-    var height = bounds.height - bounds.margin.top - bounds.margin.bottom;
+    var plot_width = bounds.width - bounds.margin.left - bounds.margin.right;
+    var plot_height = bounds.height - bounds.margin.top - bounds.margin.bottom;
 
     // Define X/Y range for domain->range mappings
     var x = d3.scale.linear()
-            .range([0, width]);
+            .range([0, plot_width]);
 
     var y = d3.scale.linear()
-            .range([0, height]);
+            .range([0, plot_height]);
 
     // X-Axis along bottom of chart
     var xAxis = d3.svg.axis()
@@ -31,14 +54,16 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
         .y(function(d) { return y(d.ranking); });
 
     // Outer container SVG element to enable responsive magic
-    var svg_root = d3.select(select_target).append("svg")
-        .attr("viewBox", "0 0 " + bounds.width + " " + bounds.height)
-        .attr("preserveAspectRatio", "none");
+    var div_target = d3.select(select_target)
+        .attr("style", "max-width:" + bounds.width + "px;max-height:" + bounds.height + "px");
 
-    // SVG that will be used for D3 operations
-    var svg = svg_root.append("svg")
-        .append("g")
-            .attr("transform", "translate(" + bounds.margin.left + "," + bounds.margin.top + ")");
+    var svg_root = div_target.append("svg")
+        .attr("viewBox", "0 0 " + bounds.width + " " + bounds.height)
+        .attr("preserveAspectRatio", "");   // $$$FTS - Consider removing entirely. Must test mobile.
+
+    // Group within SVG used as basis
+    var plot_group = svg_root.append("g")
+        .attr("transform", "translate(" + bounds.margin.left + "," + bounds.margin.top + ")");
 
     // Add one tick per date entry to x-axis
     xAxis.ticks(smash_data_set.dates.length)
@@ -118,34 +143,34 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
 
 
     // Setup x-axis
-    svg.append("g")
-            .attr("class", "x axis")
-            .attr("transform", "translate(0," + (height + 10) + ")")    // shifted down slightly
-            .call(xAxis)
-            .selectAll(".tick text")
-                .style("text-anchor", "mid");   // default is mid, but start/end are other choices
+    plot_group.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + (plot_height + 10) + ")")    // shifted down slightly
+        .call(xAxis)
+        .selectAll(".tick text")
+        .style("text-anchor", "mid");   // start, mid, or end
 
     // Setup y-axis
-    svg.append("g")
-            .attr("class", "y axis axisRight")
-            .attr("transform", "translate( " + (width + 10) + ",0)")
-            .call(yAxis)
-        .append("text")
-            .attr("y", -14)
-            .style("text-anchor", "left")
-            .text("Ranking");
+    plot_group.append("g")
+        .attr("class", "y axis axisRight")
+        .attr("transform", "translate( " + (plot_width + 10) + ",0)")
+        .call(yAxis)
+    .append("text")
+        .attr("transform", "translate(0," + -10 + ")")
+        .style("text-anchor", "middle")
+        .text("Ranking");
 
     // Bind all_rankings data to DOM
-    var character_ranks = svg.selectAll(".character_ranks")
+    var character_ranks = plot_group.selectAll(".character_ranks")
             .data(all_rankings)
         .enter().append("g")
             .attr("class", "character_ranks");
 
     // Add a colored line for each character
     character_ranks.append("path")
-            .attr("class", "rank_line")
-            .attr("d", function(d) { return line(d.values); })
-            .style("stroke", function(d) { return colors(d.character); })
+        .attr("class", "rank_line")
+        .attr("d", function(d) { return line(d.values); })
+        .style("stroke", function(d) { return colors(d.character); })
 
     // Add an invisible 'fat' line per character for handling mouse over events
     character_ranks.append("path")
@@ -232,17 +257,17 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
     */
     
     // Color
-    var line_bundles = svg.selectAll(".rank_line")[0].map( function(entry) { return { color_line: entry } } );
+    var line_bundles = plot_group.selectAll(".rank_line")[0].map( function(entry) { return { color_line: entry } } );
     
     // Hover
-    var hover_lines = svg.selectAll(".hover_line")[0];
+    var hover_lines = plot_group.selectAll(".hover_line")[0];
     hover_lines.forEach(function(hover_line, index) { line_bundles[index].hover_line = hover_line; });
     
     // Character Name
     line_bundles.forEach(function(bundle_entry, index) { bundle_entry.character = all_rankings[index].character; });
 
     // Character Lebel
-    var labels = svg.selectAll(".char_label")[0];
+    var labels = plot_group.selectAll(".char_label")[0];
     labels.forEach(function(label, index) { line_bundles[index].label = label; });
 
 
