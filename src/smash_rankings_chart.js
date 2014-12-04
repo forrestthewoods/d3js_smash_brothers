@@ -191,7 +191,7 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
             // Calculate index along y-axis to display name.
             // Default to align with line position for x=0
             // But move to end of list if line doesn't start until x > 0
-            var y_index = ((d.value.date == 0 )? d.value.ranking : (all_rankings.length + label_offset--));
+            var y_index = ((d.value.date == 0 )? d.value.ranking : (smash_data_set.characters.length + label_offset--));
             return "translate(" + x(0) + "," + y(y_index) + ")"; 
         })
         .attr("x", -10)
@@ -209,7 +209,7 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
             // Calculate index along y-axis to display name.
             // Default to align with line position for x=0
             // But move to end of list if line doesn't start until x > 0
-            var y_index = ((d.value.date == 0 )? d.value.ranking : (all_rankings.length + label_hover_offset--));
+            var y_index = ((d.value.date == 0 )? d.value.ranking : (smash_data_set.characters.length + label_hover_offset--));
             return "translate(" + x(0) + "," + (y(y_index) - (0.5*(y(1) - y(0))) + 1) + ")"; 
         })
         .attr("width", bounds.margin.left)
