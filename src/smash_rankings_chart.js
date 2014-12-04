@@ -8,33 +8,24 @@
 // group = "all", "hall_of_fame", etc. Look at smash_data.js
 //
 // bounds = { 
-//     width : #
-//     height : #
-//     margin : {
-//         top : #
-//         bottom: #
-//         left: # 
-//         right : #
-//     }
+//      plot : { width: #, height # },
+//      margin : { top: #, left: #, right: #, bottom: # }
 // }
-// Width/Height is size of complete chart
-// Plotting of lines occurs inside margin. 
-// Margin space is used for labeling axis ticks and lines
+// Plot is the inner area where lines are drawn
+// Margin is outter area where axes and labels and drawn
 
 function build_smash_power_rankings(select_target, platform, group, bounds) {
-
     var smash_data_set = smash_data[platform];
 
-    // Define size of graph area
-    var plot_width = bounds.width - bounds.margin.left - bounds.margin.right;
-    var plot_height = bounds.height - bounds.margin.top - bounds.margin.bottom;
+    var total_width = bounds.plot.width + bounds.margin.left + bounds.margin.right;
+    var total_height = bounds.plot.height + bounds.margin.top + bounds.margin.bottom;
 
     // Define X/Y range for domain->range mappings
     var x = d3.scale.linear()
-            .range([0, plot_width]);
+            .range([0, bounds.plot.width]);
 
     var y = d3.scale.linear()
-            .range([0, plot_height]);
+            .range([0, bounds.plot.height]);
 
     // X-Axis along bottom of chart
     var xAxis = d3.svg.axis()
@@ -55,10 +46,10 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
 
     // Outer container SVG element to enable responsive magic
     var div_target = d3.select(select_target)
-        .attr("style", "max-width:" + bounds.width + "px;max-height:" + bounds.height + "px");
+        .attr("style", "max-width:" + total_width + "px;max-height:" + total_height + "px");
 
     var svg_root = div_target.append("svg")
-        .attr("viewBox", "0 0 " + bounds.width + " " + bounds.height)
+        .attr("viewBox", "0 0 " + total_width + " " + total_height)
         .attr("preserveAspectRatio", "");   // $$$FTS - Consider removing entirely. Must test mobile.
 
     // Group within SVG used as basis
@@ -145,7 +136,7 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
     // Setup x-axis
     plot_group.append("g")
         .attr("class", "x axis")
-        .attr("transform", "translate(0," + (plot_height + 10) + ")")    // shifted down slightly
+        .attr("transform", "translate(0," + (bounds.plot.height + 10) + ")")    // shifted down slightly
         .call(xAxis)
         .selectAll(".tick text")
         .style("text-anchor", "mid");   // start, mid, or end
@@ -153,7 +144,7 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
     // Setup y-axis
     plot_group.append("g")
         .attr("class", "y axis axisRight")
-        .attr("transform", "translate( " + (plot_width + 10) + ",0)")
+        .attr("transform", "translate( " + (bounds.plot.width + 10) + ",0)")
         .call(yAxis)
     .append("text")
         .attr("transform", "translate(0," + -10 + ")")
