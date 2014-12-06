@@ -151,13 +151,6 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
         .style("text-anchor", "middle")
         .text("Ranking");
 
-    // Setup header for highlighted character name
-    plot_group.append("text")
-        .attr("class", "char_header")
-        .attr("transform", "translate(0," + -20 + ")")
-        .style("text-anchor", "start")
-        .text("");
-
     // Bind all_rankings data to DOM
     var character_ranks = plot_group.selectAll(".character_ranks")
             .data(all_rankings)
@@ -289,11 +282,6 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
 
         console.log(colored_line);
         console.log(colored_line.style("stroke"));
-        
-        // Update text header
-        d3.select(".char_header")
-            .text(bundle.character)
-            .style("fill", colored_line.style("000000"));
     };
 
     // Utility function to update elements within a bundle to a faded state
