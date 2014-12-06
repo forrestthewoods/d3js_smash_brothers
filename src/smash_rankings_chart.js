@@ -289,10 +289,11 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
 
         console.log(colored_line);
         console.log(colored_line.style("stroke"));
+        
         // Update text header
         d3.select(".char_header")
             .text(bundle.character)
-            .style("fill", colored_line.style("stroke"));
+            .style("fill", colored_line.style("000000"));
     };
 
     // Utility function to update elements within a bundle to a faded state
