@@ -88,6 +88,9 @@ var smash_data = {
 
             "diamonds_in_the_rough" : [ "Ice Climbers", "Jigglypuff", "Peach", 
                         "Captain Falcon", "Donkey Kong", "Mew Two"]
+
+            "players" : [ "Captain Falcon", "Donkey Kong", "Ice Climbers", "Jigglypuff", 
+                            "Mewtwo", "Peach", "Pikachu", "Yoshi"]
         },
 
         "tiers": {
