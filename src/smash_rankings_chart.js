@@ -279,9 +279,6 @@ function build_smash_power_rankings(select_target, platform, group, bounds) {
         // Make label 'pop'
         d3.select(bundle.label).style("font-weight", "bold");
         d3.select(bundle.label).style("font-size", "110%");
-
-        console.log(colored_line);
-        console.log(colored_line.style("stroke"));
     };
 
     // Utility function to update elements within a bundle to a faded state
