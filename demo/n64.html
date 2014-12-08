@@ -9,8 +9,12 @@
 </head>
 
 <body>
-    <div class="svg_target"></div>
-    <script>
-        build_smash_power_rankings(".svg_target", 300, "n64", "all");
+    <center>
+        <div class="svg_target_1"></div>
+    </center>
+        
+    <script> 
+        build_smash_power_rankings(".svg_target_1", "n64", "all", 
+            { plot: { width: 400, height: 200 }, margin: { top:30, left:140, right:40, bottom:50 } });
     </script>
 </body>
