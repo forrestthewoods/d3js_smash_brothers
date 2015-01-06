@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+    <link rel="stylesheet" href="../src/smash_style.css">
+    <script type="text/javascript" src="../lib/d3/d3.min.js"></script>
+    <script type="text/javascript" src="../src/smash_data.js"></script>
+    <script type="text/javascript" src="../src/smash_tier_chart.js"></script>
+</head>
+
+<body>
+    <center>
+        <p><b>Super Smash Brothers Melee (2002 - 2014)</b></p>
+        <div class="svg_target_1"></div>
+    </center>
+        
+    <script> 
+        build_smash_tiers(".svg_target_1", "gamecube", 
+            { plot: { width: 750, height: 370 }, margin: { top:0, left:140, right:40, bottom:50 } });
+    </script>
+</body>
