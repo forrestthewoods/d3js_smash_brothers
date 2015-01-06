@@ -41,14 +41,55 @@ function build_smash_tiers(select_target, platform, bounds) {
             .attr("fill-opacity", 0); 
 
 
- //<rect width="300" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
     // Test circle
-    plot_group.append("svg")
-        .attr("width", 50)
-        .attr("height", 50)
-        .append("circle")
-            .attr("cx", 25)
-            .attr("cy", 25)
-            .attr("r", 25)
-            .style("fill", "purple");
+    /*
+    svg_root.append("svg").append("circle")
+        .attr("cx", 25)
+        .attr("cy", 25)
+        .attr("r", 25)
+        .style("fill", "purple");
+    */
+    
+    var tier_x = 0;
+    var tier_x_pad = 15;
+    var tier_y_pad = 15;
+    var tier_width = 74;
+    var tier_height = 15;
+
+    var tier_lists = smash_data_set.tier_lists;
+    for (var i = 0; i < tier_lists.length; ++i)
+    {
+        var tier_list = tier_lists[i];
+        var tiers = tier_list.tiers;
+
+        var tier_y = 10;
+
+        for (var j = 0; j < tiers.length; ++j)
+        {
+            var tier = tiers[j];
+            var tier_size = tier.range[1] - tier.range[0] + 1;
+
+            plot_group.append("svg").append("rect")
+                .attr("x", tier_x)
+                .attr("y", tier_y)
+                .attr("width", tier_width)
+                .attr("height", tier_size * tier_height)
+                .attr("rx", 15)
+                .attr("ry", 25)
+                .attr("fill", tier.color);
+
+            tier_y = tier_y + (tier_size * tier_height) + tier_y_pad;
+        }
+
+        tier_x = tier_x + tier_width + tier_x_pad;
+        
+        //plot_group.append("svg")
+        //.attr("width", 100)
+        //.height
+    }
+
+    //<rect x="50" y="20" rx="20" ry="20" width="150" height="150"
+//style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
+
+//<rect xmlns="http://www.w3.org/2000/svg" x="14.1" y="513" width="970.4" height="15.0" fill="rgb(215,141,30)" rx="2" ry="2"/>
 }

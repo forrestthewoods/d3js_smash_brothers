@@ -93,86 +93,113 @@ var smash_data = {
                             "Mewtwo", "Peach", "Pikachu", "Yoshi"]
         },
 
-        "tiers": {
+        "tier_lists": [
             
-            "June '03" : [
-                { "title": "Top", "range": [1, 5], "color": "red" },
-                { "title": "Upper", "range": [6, 12], "color": "yellow" },
-                { "title": "Middle", "range": [13, 21], "color": "green" },
-                { "title": "Bottom", "range": [22, 26], "color": "blue" }
-            ] ,
+            {
+                "date" : "June '03",
+                "tiers" : [
+                    { "title": "Top", "range": [1, 5], "color": "red" },
+                    { "title": "Upper", "range": [6, 12], "color": "yellow" },
+                    { "title": "Middle", "range": [13, 21], "color": "green" },
+                    { "title": "Bottom", "range": [22, 26], "color": "blue" }
+                ]
+            },
 
-            "July '03" : [
-                { "title": "Top", "range": [1, 4], "color": "red"},
-                { "title": "Upper", "range": [5, 12], "color": "orange"},
-                { "title": "Middle", "range": [13, 20], "color": "yello"},
-                { "title": "Low", "range": [21, 23], "color": "green"},
-                { "title": "Bottom", "range": [24, 26], "color": "blue"}
-            ],
+            {
+                "date" : "July '03",
+                "tiers" : [
+                    { "title": "Top", "range": [1, 4], "color": "red"},
+                    { "title": "Upper", "range": [5, 12], "color": "orange"},
+                    { "title": "Middle", "range": [13, 20], "color": "yellow"},
+                    { "title": "Low", "range": [21, 23], "color": "green"},
+                    { "title": "Bottom", "range": [24, 26], "color": "blue"}
+                ]    
+            },
      
-            "Oct '03" : [
-                { "title": "Top", "range": [1, 2], "color": "red"},
-                { "title": "Upper", "range": [3, 5], "color": "orange"},
-                { "title": "High", "range": [6, 12], "color": "yellow"},
-                { "title": "Middle", "range": [13, 19], "color": "green"},
-                { "title": "Low", "range": [20, 23], "color": "blue"},
-                { "title": "Bottom", "range": [24, 26], "color": "magenta"}
-            ],
+            {
+                "date" : "Oct '03",
+                "tiers" : [
+                    { "title": "Top", "range": [1, 2], "color": "red"},
+                    { "title": "Upper", "range": [3, 5], "color": "orange"},
+                    { "title": "High", "range": [6, 12], "color": "yellow"},
+                    { "title": "Middle", "range": [13, 19], "color": "green"},
+                    { "title": "Low", "range": [20, 23], "color": "blue"},
+                    { "title": "Bottom", "range": [24, 26], "color": "magenta"}
+                ]
+            },
             
-            "April '04" : [
-                { "title": "Top", "range": [1, 3], "color": "red"},
-                { "title": "Upper", "range": [4, 8], "color": "orange"},
-                { "title": "High", "range": [9, 12], "color": "yellow"},
-                { "title": "Middle", "range": [13, 19], "color": "green"},
-                { "title": "Low", "range": [20, 24], "color": "blue"},
-                { "title": "Bottom", "range": [25, 26], "color": "magenta"}
-            ],
+            {
+                "date" : "April '04",
+                "tiers" : [
+                    { "title": "Top", "range": [1, 3], "color": "red"},
+                    { "title": "Upper", "range": [4, 8], "color": "orange"},
+                    { "title": "High", "range": [9, 12], "color": "yellow"},
+                    { "title": "Middle", "range": [13, 19], "color": "green"},
+                    { "title": "Low", "range": [20, 24], "color": "blue"},
+                    { "title": "Bottom", "range": [25, 26], "color": "magenta"}
+                ]
+            },
 
-            "March '05" : [
-                { "title": "Top", "range": [1, 3], "color": "red"},
-                { "title": "Upper", "range": [4, 7], "color": "orange"},
-                { "title": "High", "range": [8, 12], "color": "yellow"},
-                { "title": "Middle", "range": [13, 18], "color": "green"},
-                { "title": "Low", "range": [19, 24], "color": "blue"},
-                { "title": "Bottom", "range": [25, 26], "color": "magenta"}
-            ],
+            {
+                "date" : "April '04",
+                "tiers" : [
+                    { "title": "Top", "range": [1, 3], "color": "red"},
+                    { "title": "Upper", "range": [4, 7], "color": "orange"},
+                    { "title": "High", "range": [8, 12], "color": "yellow"},
+                    { "title": "Middle", "range": [13, 18], "color": "green"},
+                    { "title": "Low", "range": [19, 24], "color": "blue"},
+                    { "title": "Bottom", "range": [25, 26], "color": "magenta"}
+                ]
+            },
 
-            "Oct '08" : [
-                { "title": "Top", "range": [1, 4], "color": "red"},
-                { "title": "High", "range": [5, 8], "color": "orange"},
-                { "title": "Middle", "range": [9, 14], "color": "yellow"},
-                { "title": "Low", "range": [15, 20], "color": "green"},
-                { "title": "Bottom", "range": [21, 26], "color": "blue"}
-            ],
+            {
+                "date" : "Oct '08",
+                "tiers" : [            
+                    { "title": "Top", "range": [1, 4], "color": "red"},
+                    { "title": "High", "range": [5, 8], "color": "orange"},
+                    { "title": "Middle", "range": [9, 14], "color": "yellow"},
+                    { "title": "Low", "range": [15, 20], "color": "green"},
+                    { "title": "Bottom", "range": [21, 26], "color": "blue"}
+                ]
+            },
 
-            "Sept '10" : [
-                { "title": "Top", "range": [1, 3], "color": "red"},
-                { "title": "High", "range": [4, 5], "color": "orange"},
-                { "title": "Upper", "range": [6, 7], "color": "yellow"},
-                { "title": "Middle", "range": [8, 11], "color": "green"},
-                { "title": "Low", "range": [12, 16], "color": "cyan"},
-                { "title": "Bottom", "range": [17, 21], "color": "blue"},
-                { "title": "Neglible", "range": [22, 26], "color": "magenta"}
-            ],
+            {
+                "date" : "Sept '10",
+                "tiers" : [               
+                    { "title": "Top", "range": [1, 3], "color": "red"},
+                    { "title": "High", "range": [4, 5], "color": "orange"},
+                    { "title": "Upper", "range": [6, 7], "color": "yellow"},
+                    { "title": "Middle", "range": [8, 11], "color": "green"},
+                    { "title": "Low", "range": [12, 16], "color": "cyan"},
+                    { "title": "Bottom", "range": [17, 21], "color": "blue"},
+                    { "title": "Neglible", "range": [22, 26], "color": "magenta"}
+                ]
+            },
 
-            "Dec '10" : [
-                { "title": "S", "range": [1, 4], "color": "red"},
-                { "title": "A", "range": [5, 7], "color": "orange"},
-                { "title": "B", "range": [8, 8], "color": "yellow"},
-                { "title": "C", "range": [9, 11], "color": "green"},
-                { "title": "D", "range": [12, 15], "color": "cyan"},
-                { "title": "E", "range": [16, 17], "color": "blue"},
-                { "title": "F", "range": [18, 22], "color": "magenta"},
-                { "title": "G", "range": [23, 26], "color": "purple"}
-            ],
+            {
+                "date" : "Dec '10",
+                "tiers" : [               
+                    { "title": "S", "range": [1, 4], "color": "red"},
+                    { "title": "A", "range": [5, 7], "color": "orange"},
+                    { "title": "B", "range": [8, 8], "color": "yellow"},
+                    { "title": "C", "range": [9, 11], "color": "green"},
+                    { "title": "D", "range": [12, 15], "color": "cyan"},
+                    { "title": "E", "range": [16, 17], "color": "blue"},
+                    { "title": "F", "range": [18, 22], "color": "magenta"},
+                    { "title": "G", "range": [23, 26], "color": "purple"}
+                ]
+            },
 
-            "July '13" : [
-                { "title": "S", "range": [1, 8], "color": "red"},
-                { "title": "A", "range": [9, 14], "color": "yellow"},
-                { "title": "B", "range": [15, 22], "color": "green"},
-                { "title": "F", "range": [23, 26], "color": "blue"}
-            ]
-        },
+            {
+                "date" : "July '13",
+                "tiers" : [                         
+                    { "title": "S", "range": [1, 8], "color": "red"},
+                    { "title": "A", "range": [9, 14], "color": "yellow"},
+                    { "title": "B", "range": [15, 22], "color": "green"},
+                    { "title": "F", "range": [23, 26], "color": "blue"}
+                ]
+            }
+        ],
 
         // Per character data
         "characters" : [
