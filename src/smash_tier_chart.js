@@ -17,6 +17,7 @@ function build_smash_tiers(select_target, platform, bounds) {
         .attr("transform", "translate(" + bounds.margin.left + "," + bounds.margin.top + ")");
 
     // Full bounds
+    /*
     svg_root.append("svg")
         .attr("width", total_width)
         .attr("height", total_height)
@@ -39,16 +40,7 @@ function build_smash_tiers(select_target, platform, bounds) {
             .attr("stroke", "red")
             .attr("stroke-width", 1)
             .attr("fill-opacity", 0); 
-
-
-    // Test circle
-    /*
-    svg_root.append("svg").append("circle")
-        .attr("cx", 25)
-        .attr("cy", 25)
-        .attr("r", 25)
-        .style("fill", "purple");
-    */
+*/
     
     var tier_x = 5;
     var tier_x_pad = 15;
@@ -73,6 +65,7 @@ function build_smash_tiers(select_target, platform, bounds) {
         var tier_list = tier_lists[i];
         var tiers = tier_list.tiers;
 
+        // Reset tier_y to top
         var tier_y = 10;
 
         for (var j = 0; j < tiers.length; ++j)
@@ -80,9 +73,14 @@ function build_smash_tiers(select_target, platform, bounds) {
             var tier = tiers[j];
             var tier_size = tier.range[1] - tier.range[0] + 1;
 
-            plot_group.append("svg").append("rect")
-                .attr("x", tier_x)
-                .attr("y", tier_y)
+            var tier_group = plot_group.append("g")
+                .attr("transform", "translate(" + tier_x + "," + tier_y + ")");
+
+            var tier_svg = tier_group.append("svg");
+
+            tier_svg.append("rect")
+                .attr("x", 5)
+                .attr("y", 5)
                 .attr("width", tier_width)
                 .attr("height", tier_size * tier_height)
                 .attr("rx", 15)
@@ -90,22 +88,17 @@ function build_smash_tiers(select_target, platform, bounds) {
                 .attr("stroke", tier_color_map[tier.color].outer)
                 .attr("stroke-width", 2)
                 .attr("fill", tier_color_map[tier.color].inner);
-                //.attr("style", "background:",tier_color_map[tier.color].inner
 
-                //<td colspan="1" style="background:#bf7fbf;border:2px solid #7f007f">23
+            tier_svg.append("text")
+                .attr("x", 10)
+                .attr("y", 20)
+                .text(function(d) { return "test"; });
 
+            // Slide tier_y down for next tier entry
             tier_y = tier_y + (tier_size * tier_height) + tier_y_pad;
         }
 
+        // Slide tier_x to right for next tier list (column)
         tier_x = tier_x + tier_width + tier_x_pad;
-        
-        //plot_group.append("svg")
-        //.attr("width", 100)
-        //.height
     }
-
-    //<rect x="50" y="20" rx="20" ry="20" width="150" height="150"
-//style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
-
-//<rect xmlns="http://www.w3.org/2000/svg" x="14.1" y="513" width="970.4" height="15.0" fill="rgb(215,141,30)" rx="2" ry="2"/>
 }
