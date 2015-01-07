@@ -41,7 +41,7 @@ function build_smash_tiers(select_target, platform, bounds) {
 
     var tier_title_height = 0;
     var tier_entry_height = 15;
-    var tier_entry_base = 5;    // whitespace at bottom of tier element
+    var tier_entry_base = 6;    // whitespace at bottom of tier element
 
     // Create tier lists
     for (var i = 0; i < tier_lists.length; ++i) {
@@ -51,7 +51,7 @@ function build_smash_tiers(select_target, platform, bounds) {
         for (var j = 0; j < characters.length; ++j) {
             var character = characters[j];
             var rank = character.rankings[i];
-            sorted_characters[rank] = character.name;
+            sorted_characters[rank] = character;
         }
 
         var tiers = tier_list.tiers;
@@ -91,11 +91,12 @@ function build_smash_tiers(select_target, platform, bounds) {
             for (var rank = tier.range[0]; rank <= tier.range[1]; ++rank) {
                 var character = sorted_characters[rank];
                 tier_group.append("text")
+                    .attr("class", "smash_tier_entry")
                     .attr("x", tier_width * .5)
                     .attr("y", 15 + (rank - tier.range[0]) * 15)
                     .attr("width", tier_width)
                     .style("text-anchor", "middle")
-                    .text(function(d) { return sorted_characters[rank] });
+                    .text(function(d) { return character.short_name ? character.short_name : character.name });
             }
 
             // Slide tier_y down for next tier entry

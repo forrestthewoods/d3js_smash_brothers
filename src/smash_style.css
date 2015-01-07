@@ -8,10 +8,13 @@
 
 .char_label {
     font-family: 'Open Sans', sans-serif;
-    
-    /* Prevents cursor from turning into 'I'
-    and blocking hover box cursor events */
-    pointer-events: none;
+    pointer-events: none;  /* prevents cursor from interactive with text element */
+}
+
+.smash_tier_entry {
+    font-family: 'Tahoma';
+    font-size: 8.5pt;
+    pointer-events: none; /* prevents cursor from interactive with text element */
 }
 
 .char_label_hover {
