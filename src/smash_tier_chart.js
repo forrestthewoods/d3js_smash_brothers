@@ -56,10 +56,10 @@ function build_smash_tiers(select_target, platform, bounds) {
 
         var tiers = tier_list.tiers;
 
-        var tier_y_whitespace = total_height - (characters.length * tier_entry_height) - (tiers.length * (tier_title_height + tier_entry_base));
+        var tier_y = 5;
+        var tier_y_whitespace = total_height - (characters.length * tier_entry_height) - (tiers.length * (tier_title_height + tier_entry_base)) - tier_y;
 
-        var tier_y = 10;
-        var tier_y_pad = (tier_y_whitespace - tier_y) / (tiers.length);
+        var tier_y_pad = (tier_y_whitespace - tier_y) / (tiers.length - 1);
 
         var tier_list_group = svg_root.append("g")
             .attr("transform", "translate(" + tier_x + ",0)");
@@ -69,7 +69,6 @@ function build_smash_tiers(select_target, platform, bounds) {
             var tier = tiers[j];
             var tier_size = tier.range[1] - tier.range[0] + 1;
             var tier_height = tier_title_height + (tier_entry_height * tier_size) + tier_entry_base;
-            console.log(tier_height);
 
             var tier_group = tier_list_group.append("g")
                 .attr("transform", "translate(" + 0 + "," + tier_y + ")");
