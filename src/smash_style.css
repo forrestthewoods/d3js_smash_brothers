@@ -14,7 +14,7 @@
 .smash_tier_title {
     font-family: 'Tahoma';
     font-weight: bold;
-    font-size: 11pt;
+    font-size: 9pt;
     pointer-events: none; /* prevents cursor from interactive with text element */
 }
 
