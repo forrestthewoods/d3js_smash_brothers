@@ -39,9 +39,9 @@ function build_smash_tiers(select_target, platform, bounds) {
     var tier_x_pad = tier_x_whitespace / (tier_lists.length + 1);
     var tier_x = tier_x_pad;
 
-    var tier_title_height = 0;
+    var tier_title_height = 15;
     var tier_entry_height = 15;
-    var tier_entry_base = 6;    // whitespace at bottom of tier element
+    var tier_entry_base = 5;    // whitespace at bottom of tier element
 
     // Create tier lists
     for (var i = 0; i < tier_lists.length; ++i) {
@@ -80,20 +80,27 @@ function build_smash_tiers(select_target, platform, bounds) {
                 .attr("width", tier_width)
                 .attr("height", tier_height)
                 .attr("rx", 15)
-                .attr("ry", 25)
+                .attr("ry", 22)
                 .attr("stroke", tier_color_map[tier.color].outer)
                 .attr("stroke-width", 2)
                 .attr("fill", tier_color_map[tier.color].inner);
 
             // Tier title
-
+            tier_group.append("text")
+                .attr("class", "smash_tier_title")
+                .attr("x", tier_width * .5)
+                .attr("y", 15)
+                .attr("width", tier_width)
+                .style("text-anchor", "middle")
+                .text(function(d) { return tier.title });
+            
             // Characters in tier
             for (var rank = tier.range[0]; rank <= tier.range[1]; ++rank) {
                 var character = sorted_characters[rank];
                 tier_group.append("text")
                     .attr("class", "smash_tier_entry")
                     .attr("x", tier_width * .5)
-                    .attr("y", 15 + (rank - tier.range[0]) * 15)
+                    .attr("y", 30 + (rank - tier.range[0]) * 15)
                     .attr("width", tier_width)
                     .style("text-anchor", "middle")
                     .text(function(d) { return character.short_name ? character.short_name : character.name });
