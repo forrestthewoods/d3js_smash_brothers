@@ -12,42 +12,8 @@ function build_smash_tiers(select_target, platform, bounds) {
         .attr("viewBox", "0 0 " + total_width + " " + total_height)
         .attr("preserveAspectRatio", "");   // $$$FTS - Consider removing entirely. Must test mobile.
 
-    // Group within SVG used as basis
-    var plot_group = svg_root.append("g")
-        .attr("transform", "translate(" + bounds.margin.left + "," + bounds.margin.top + ")");
 
-    // Full bounds
-    /*
-    svg_root.append("svg")
-        .attr("width", total_width)
-        .attr("height", total_height)
-        .append("rect")
-            .attr("width", total_width)
-            .attr("height", total_height)
-            .attr("stroke", "black")
-            .attr("stroke-width", 1)
-            .attr("fill-opacity", 0); 
-
-    // Group bounds
-    svg_root.append("svg")
-        .attr("x", bounds.margin.left)
-        .attr("y", bounds.margin.top)
-        .attr("width", total_width)
-        .attr("height", total_height)
-        .append("rect")
-            .attr("width", total_width - bounds.margin.left)
-            .attr("height", total_height - bounds.margin.top)
-            .attr("stroke", "red")
-            .attr("stroke-width", 1)
-            .attr("fill-opacity", 0); 
-*/
-    
-    var tier_x = 5;
-    var tier_x_pad = 15;
-    var tier_y_pad = 15;
-    var tier_width = 73;
-    var tier_height = 15;
-
+    // For converting textual colors in smash data to actual RGBs
     var tier_color_map = {
         red : { "outer" : "#ff0000", "inner" : "#ff7f7f" },
         orange : { "outer" : "#ff7f00", "inner" : "#ffbf7f" },
@@ -59,43 +25,82 @@ function build_smash_tiers(select_target, platform, bounds) {
         purple : { "outer" : "#7f007f", "inner" : "#bf7fbf" }
     };
 
+    // Data for tier lists
+    var characters = smash_data_set.characters;
+    var sorted_characters = new Array(characters.length);
+
+    // Tier Lists to be displayed
     var tier_lists = smash_data_set.tier_lists;
-    for (var i = 0; i < tier_lists.length; ++i)
-    {
+
+    // Spacing data
+    var tier_width = 73;
+
+    var tier_x_whitespace = total_width - (tier_width * tier_lists.length);
+    var tier_x_pad = tier_x_whitespace / (tier_lists.length + 1);
+    var tier_x = tier_x_pad;
+
+    var tier_title_height = 0;
+    var tier_entry_height = 15;
+    var tier_entry_base = 5;    // whitespace at bottom of tier element
+
+    // Create tier lists
+    for (var i = 0; i < tier_lists.length; ++i) {
         var tier_list = tier_lists[i];
+
+        // Order characters by ranking for this tier lists
+        for (var j = 0; j < characters.length; ++j) {
+            var character = characters[j];
+            var rank = character.rankings[i];
+            sorted_characters[rank] = character.name;
+        }
+
         var tiers = tier_list.tiers;
 
-        // Reset tier_y to top
-        var tier_y = 10;
+        var tier_y_whitespace = total_height - (characters.length * tier_entry_height) - (tiers.length * (tier_title_height + tier_entry_base));
 
-        for (var j = 0; j < tiers.length; ++j)
-        {
+        var tier_y = 10;
+        var tier_y_pad = (tier_y_whitespace - tier_y) / (tiers.length);
+
+        var tier_list_group = svg_root.append("g")
+            .attr("transform", "translate(" + tier_x + ",0)");
+
+        // Create tier list
+        for (var j = 0; j < tiers.length; ++j) {
             var tier = tiers[j];
             var tier_size = tier.range[1] - tier.range[0] + 1;
+            var tier_height = tier_title_height + (tier_entry_height * tier_size) + tier_entry_base;
+            console.log(tier_height);
 
-            var tier_group = plot_group.append("g")
-                .attr("transform", "translate(" + tier_x + "," + tier_y + ")");
+            var tier_group = tier_list_group.append("g")
+                .attr("transform", "translate(" + 0 + "," + tier_y + ")");
 
-            var tier_svg = tier_group.append("svg");
-
-            tier_svg.append("rect")
-                .attr("x", 5)
-                .attr("y", 5)
+            // Tier background
+            tier_group.append("rect")
+                .attr("x", 0)
+                .attr("y", 0)
                 .attr("width", tier_width)
-                .attr("height", tier_size * tier_height)
+                .attr("height", tier_height)
                 .attr("rx", 15)
                 .attr("ry", 25)
                 .attr("stroke", tier_color_map[tier.color].outer)
                 .attr("stroke-width", 2)
                 .attr("fill", tier_color_map[tier.color].inner);
 
-            tier_svg.append("text")
-                .attr("x", 10)
-                .attr("y", 20)
-                .text(function(d) { return "test"; });
+            // Tier title
+
+            // Characters in tier
+            for (var rank = tier.range[0]; rank <= tier.range[1]; ++rank) {
+                var character = sorted_characters[rank];
+                tier_group.append("text")
+                    .attr("x", tier_width * .5)
+                    .attr("y", 15 + (rank - tier.range[0]) * 15)
+                    .attr("width", tier_width)
+                    .style("text-anchor", "middle")
+                    .text(function(d) { return sorted_characters[rank] });
+            }
 
             // Slide tier_y down for next tier entry
-            tier_y = tier_y + (tier_size * tier_height) + tier_y_pad;
+            tier_y = tier_y + tier_height + tier_y_pad;
         }
 
         // Slide tier_x to right for next tier list (column)
