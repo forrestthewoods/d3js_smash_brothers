@@ -99,9 +99,9 @@ var smash_data = {
                 "date" : "June '03",
                 "tiers" : [
                     { "title": "Top", "range": [1, 5], "color": "red" },
-                    { "title": "Upper", "range": [6, 12], "color": "yellow" },
+                    { "title": "Upper", "range": [6, 12], "color": "orange" },
                     { "title": "Middle", "range": [13, 21], "color": "green" },
-                    { "title": "Bottom", "range": [22, 26], "color": "blue" }
+                    { "title": "Bottom", "range": [22, 26], "color": "magenta" }
                 ]
             },
 
@@ -110,9 +110,9 @@ var smash_data = {
                 "tiers" : [
                     { "title": "Top", "range": [1, 4], "color": "red"},
                     { "title": "Upper", "range": [5, 12], "color": "orange"},
-                    { "title": "Middle", "range": [13, 20], "color": "yellow"},
-                    { "title": "Low", "range": [21, 23], "color": "green"},
-                    { "title": "Bottom", "range": [24, 26], "color": "blue"}
+                    { "title": "Middle", "range": [13, 20], "color": "green"},
+                    { "title": "Low", "range": [21, 23], "color": "blue"},
+                    { "title": "Bottom", "range": [24, 26], "color": "magenta"}
                 ]    
             },
      
@@ -141,7 +141,7 @@ var smash_data = {
             },
 
             {
-                "date" : "April '04",
+                "date" : "March '05",
                 "tiers" : [
                     { "title": "Top", "range": [1, 3], "color": "red"},
                     { "title": "Upper", "range": [4, 7], "color": "orange"},
@@ -153,13 +153,24 @@ var smash_data = {
             },
 
             {
+                "date" : "July '06",
+                "tiers" : [
+                    { "title": "Top", "range": [1, 2], "color": "red"},
+                    { "title": "Upper", "range": [3, 5], "color": "orange"},
+                    { "title": "Middle", "range": [6, 12], "color": "green"},
+                    { "title": "Low", "range": [13, 18], "color": "blue"},
+                    { "title": "Bottom", "range": [19, 26], "color": "magenta"}
+                ]
+            },
+
+            {
                 "date" : "Oct '08",
                 "tiers" : [            
                     { "title": "Top", "range": [1, 4], "color": "red"},
-                    { "title": "High", "range": [5, 8], "color": "orange"},
-                    { "title": "Middle", "range": [9, 14], "color": "yellow"},
-                    { "title": "Low", "range": [15, 20], "color": "green"},
-                    { "title": "Bottom", "range": [21, 26], "color": "blue"}
+                    { "title": "Upper", "range": [5, 8], "color": "orange"},
+                    { "title": "Middle", "range": [9, 14], "color": "green"},
+                    { "title": "Low", "range": [15, 20], "color": "blue"},
+                    { "title": "Bottom", "range": [21, 26], "color": "magenta"}
                 ]
             },
 
@@ -167,12 +178,12 @@ var smash_data = {
                 "date" : "Sept '10",
                 "tiers" : [               
                     { "title": "Top", "range": [1, 3], "color": "red"},
-                    { "title": "High", "range": [4, 5], "color": "orange"},
-                    { "title": "Upper", "range": [6, 7], "color": "yellow"},
+                    { "title": "Upper", "range": [4, 5], "color": "orange"},
+                    { "title": "High", "range": [6, 7], "color": "yellow"},
                     { "title": "Middle", "range": [8, 11], "color": "green"},
-                    { "title": "Low", "range": [12, 16], "color": "cyan"},
-                    { "title": "Bottom", "range": [17, 21], "color": "blue"},
-                    { "title": "Neglible", "range": [22, 26], "color": "magenta"}
+                    { "title": "Low", "range": [12, 16], "color": "blue"},
+                    { "title": "Bottom", "range": [17, 21], "color": "magenta"},
+                    { "title": "Neglible", "range": [22, 26], "color": "purple"}
                 ]
             },
 
@@ -194,9 +205,9 @@ var smash_data = {
                 "date" : "July '13",
                 "tiers" : [                         
                     { "title": "S", "range": [1, 8], "color": "red"},
-                    { "title": "A", "range": [9, 14], "color": "yellow"},
+                    { "title": "A", "range": [9, 14], "color": "orange"},
                     { "title": "B", "range": [15, 22], "color": "green"},
-                    { "title": "F", "range": [23, 26], "color": "blue"}
+                    { "title": "F", "range": [23, 26], "color": "magenta"}
                 ]
             }
         ],

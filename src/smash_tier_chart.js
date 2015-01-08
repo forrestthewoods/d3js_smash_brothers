@@ -4,7 +4,7 @@ function build_smash_tiers(select_target, platform, bounds) {
     var total_width = bounds.plot.width + bounds.margin.left + bounds.margin.right;
     var total_height = bounds.plot.height + bounds.margin.top + bounds.margin.bottom;
 
-    // Outer container SVG element to enable responsive magic
+    // dark container SVG element to enable responsive magic
     var div_target = d3.select(select_target)
         .attr("style", "max-width:" + total_width + "px;max-height:" + total_height + "px");
 
@@ -15,14 +15,14 @@ function build_smash_tiers(select_target, platform, bounds) {
 
     // For converting textual colors in smash data to actual RGBs
     var tier_color_map = {
-        red : { "outer" : "#ff0000", "inner" : "#ff7f7f", "light" : "#ffbfbf" },
-        orange : { "outer" : "#ff7f00", "inner" : "#ffbf7f", "light" : "#ffdfbf" },
-        yellow : { "outer" : "#ffff00", "inner" : "#ffff7f", "light" : "#ffffbf" },
-        green : { "outer" : "#00ff00", "inner" : "#7fff7f", "light" : "#bfffbf" },
-        cyan : { "outer" : "#00ffff", "inner" : "#bfffff", "light" : "#bfffff" },
-        blue : { "outer" : "#0000ff", "inner" : "#7f7fff", "light" : "#bfbfff" },
-        magenta : { "outer" : "#ff00ff", "inner" : "#ff7fff", "light" : "#ffbfff" },
-        purple : { "outer" : "#7f007f", "inner" : "#bf7fbf", "light" : "#dfbfdf" }
+        red : { "dark" : "#ff0000", "medium" : "#ff7f7f", "light" : "#ffbfbf" },
+        orange : { "dark" : "#ff7f00", "medium" : "#ffbf7f", "light" : "#ffdfbf" },
+        yellow : { "dark" : "#ffff00", "medium" : "#ffff7f", "light" : "#ffffbf" },
+        green : { "dark" : "#00ff00", "medium" : "#7fff7f", "light" : "#bfffbf" },
+        cyan : { "dark" : "#00ffff", "medium" : "#bfffff", "light" : "#bfffff" },
+        blue : { "dark" : "#0000ff", "medium" : "#7f7fff", "light" : "#bfbfff" },
+        magenta : { "dark" : "#ff00ff", "medium" : "#ff7fff", "light" : "#ffbfff" },
+        purple : { "dark" : "#7f007f", "medium" : "#bf7fbf", "light" : "#dfbfdf" }
     };
 
     // Data for tier lists
@@ -36,12 +36,29 @@ function build_smash_tiers(select_target, platform, bounds) {
     var tier_width = 73;
 
     var tier_x_whitespace = total_width - (tier_width * tier_lists.length);
-    var tier_x_pad = tier_x_whitespace / (tier_lists.length + 1);
-    var tier_x = tier_x_pad;
+    var tier_x_pad = 5;
+    var tier_x = (tier_x_whitespace - (tier_x_pad * tier_lists.length - 1)) / 2;
 
     var tier_title_height = 17;
     var tier_entry_height = 15;
     var tier_entry_base = 5;    // whitespace at bottom of tier element
+
+    var path_data_tier_title = [ 
+        ["M", 0, 20],
+        ["L", 0, 0],
+        ["L", tier_width, 0],
+        ["L", tier_width, 20]
+    ];
+
+    // Utility function for building path data
+    var path_reduce = function(array) {
+        return array.reduce(function(sum, element) {
+            return sum + " " + element.reduce(function(sum, element) {
+                return sum + " " + element
+            })
+        }, "")
+    };
+
 
     // Create tier lists
     for (var i = 0; i < tier_lists.length; ++i) {
@@ -50,7 +67,8 @@ function build_smash_tiers(select_target, platform, bounds) {
         // Order characters by ranking for this tier lists
         for (var j = 0; j < characters.length; ++j) {
             var character = characters[j];
-            var rank = character.rankings[i];
+            var rankings = character.rankings;
+            var rank = rankings[i + (rankings.length - tier_lists.length)];
             sorted_characters[rank] = character;
         }
 
@@ -70,89 +88,36 @@ function build_smash_tiers(select_target, platform, bounds) {
             var tier_size = tier.range[1] - tier.range[0] + 1;
             var tier_height = tier_title_height + (tier_entry_height * tier_size) + tier_entry_base;
 
+            var path_data_title_body = [
+                ["M", 0, 20],
+                ["L", 0, tier_height],
+                ["L", tier_width, tier_height],
+                ["L", tier_width, 20]
+            ];
+
             var tier_group = tier_list_group.append("g")
                 .attr("transform", "translate(" + 0 + "," + tier_y + ")");
 
-            if (false) {
-            // Tier background
-            tier_group.append("rect")
-                .attr("x", 0)
-                .attr("y", 0)
-                .attr("rx", 15)
-                .attr("ry", 22)
-                .attr("width", tier_width)
-                .attr("height", tier_height)
-                .attr("stroke", tier_color_map[tier.color].outer)
-                .attr("stroke-width", 2)
-                .attr("fill", tier_color_map[tier.color].inner);
-
-            if ( j > 1) {
-            tier_group.append("rect")
-                .attr("x", 0)
-                .attr("y", 0)
-                .attr("width", tier_width)
-                .attr("height", 25)
-                .attr("stroke", tier_color_map[tier.color].outer)
+            tier_group.append("path")
+                .attr("d", path_reduce(path_data_tier_title))
+                .attr("stroke", tier_color_map[tier.color].dark)
                 .attr("stroke-width", 2)
                 .attr("fill", tier_color_map[tier.color].light);
-            }
+
+            tier_group.append("path")
+                .attr("d", path_reduce(path_data_title_body))
+                .attr("stroke", tier_color_map[tier.color].dark)
+                .attr("stroke-width", 2)
+                .attr("fill", tier_color_map[tier.color].medium);
+
 
             tier_group.append("line")
                 .attr("x1", 0)
                 .attr("x2", tier_width)
                 .attr("y1", 20)
                 .attr("y2", 20)
-                .attr("stroke", tier_color_map[tier.color].outer)
+                .attr("stroke", tier_color_map[tier.color].dark)
                 .attr("stroke-width", 1);
-            }
-            else {
-                var path_data_top = [ 
-                    ["M", 0, 20],
-                    ["L", 0, 0],
-                    ["L", tier_width, 0],
-                    ["L", tier_width, 20]
-                ];
-
-                var rx = 15;
-                var ry = 22;
-                var path_data_bottom = [
-                    ["M", 0, 20],
-                    ["L", 0, tier_height - ry],
-                    ["A", rx, ry, 0, 0, 0, rx, tier_height],
-                    ["L", tier_width - rx, tier_height],
-                    ["A", rx, ry, 0, 0, 0, tier_width, tier_height - ry],
-                    ["L", tier_width, 20]
-                ];
-
-                var path_reduce = function(array) {
-                    return array.reduce(function(sum, element) {
-                        return sum + " " + element.reduce(function(sum, element) {
-                            return sum + " " + element
-                        })
-                    }, "")
-                };
-
-                tier_group.append("path")
-                    .attr("d", path_reduce(path_data_top))
-                    .attr("stroke", tier_color_map[tier.color].outer)
-                    .attr("stroke-width", 2)
-                    .attr("fill", tier_color_map[tier.color].light);
-
-                tier_group.append("path")
-                    .attr("d", path_reduce(path_data_bottom))
-                    .attr("stroke", tier_color_map[tier.color].outer)
-                    .attr("stroke-width", 2)
-                    .attr("fill", tier_color_map[tier.color].inner);
-
-
-                tier_group.append("line")
-                    .attr("x1", 0)
-                    .attr("x2", tier_width)
-                    .attr("y1", 20)
-                    .attr("y2", 20)
-                    .attr("stroke", tier_color_map[tier.color].outer)
-                    .attr("stroke-width", 1);
-                }
 
             // Tier title
             tier_group.append("text")
