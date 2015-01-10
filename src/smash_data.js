@@ -15,20 +15,20 @@ var smash_data = {
         "tiers" : {
             "March '08" : [
                 { "title": "S", "range": [1,3], "color":"red" },
-                { "title": "A", "range": [4,6], "color":"yellow" },
+                { "title": "A", "range": [4,6], "color":"cyan" },
                 { "title": "B", "range": [7,9], "color":"green" },
                 { "title": "C", "range": [10,12], "color":"blue" }
             ],
             "Sept, '09" : [
                 { "title": "S", "range": [1,2], "color":"red" },
-                { "title": "A", "range": [3,5], "color":"yellow" },
+                { "title": "A", "range": [3,5], "color":"cyan" },
                 { "title": "B", "range": [6,9], "color":"green" },
                 { "title": "C", "range": [10,12], "color":"blue" }
             ],
             "Sept '11" : [
                 { "title": "S", "range": [1,1], "color":"red" },
                 { "title": "A", "range": [2,3], "color":"orange" },
-                { "title": "B", "range": [4,5], "color":"yellow" },
+                { "title": "B", "range": [4,5], "color":"cyan" },
                 { "title": "C", "range": [6,9], "color":"green" },
                 { "title": "D", "range": [10,12], "color":"blue" }
             ]
@@ -121,7 +121,7 @@ var smash_data = {
                 "tiers" : [
                     { "title": "Top", "range": [1, 2], "color": "red"},
                     { "title": "Upper", "range": [3, 5], "color": "orange"},
-                    { "title": "High", "range": [6, 12], "color": "yellow"},
+                    { "title": "High", "range": [6, 12], "color": "cyan"},
                     { "title": "Middle", "range": [13, 19], "color": "green"},
                     { "title": "Low", "range": [20, 23], "color": "blue"},
                     { "title": "Bottom", "range": [24, 26], "color": "magenta"}
@@ -133,7 +133,7 @@ var smash_data = {
                 "tiers" : [
                     { "title": "Top", "range": [1, 3], "color": "red"},
                     { "title": "Upper", "range": [4, 8], "color": "orange"},
-                    { "title": "High", "range": [9, 12], "color": "yellow"},
+                    { "title": "High", "range": [9, 12], "color": "cyan"},
                     { "title": "Middle", "range": [13, 19], "color": "green"},
                     { "title": "Low", "range": [20, 24], "color": "blue"},
                     { "title": "Bottom", "range": [25, 26], "color": "magenta"}
@@ -145,7 +145,7 @@ var smash_data = {
                 "tiers" : [
                     { "title": "Top", "range": [1, 3], "color": "red"},
                     { "title": "Upper", "range": [4, 7], "color": "orange"},
-                    { "title": "High", "range": [8, 12], "color": "yellow"},
+                    { "title": "High", "range": [8, 12], "color": "cyan"},
                     { "title": "Middle", "range": [13, 18], "color": "green"},
                     { "title": "Low", "range": [19, 24], "color": "blue"},
                     { "title": "Bottom", "range": [25, 26], "color": "magenta"}
@@ -179,7 +179,7 @@ var smash_data = {
                 "tiers" : [               
                     { "title": "Top", "range": [1, 3], "color": "red"},
                     { "title": "Upper", "range": [4, 5], "color": "orange"},
-                    { "title": "High", "range": [6, 7], "color": "yellow"},
+                    { "title": "High", "range": [6, 7], "color": "cyan"},
                     { "title": "Middle", "range": [8, 11], "color": "green"},
                     { "title": "Low", "range": [12, 16], "color": "blue"},
                     { "title": "Bottom", "range": [17, 21], "color": "magenta"},
@@ -192,9 +192,9 @@ var smash_data = {
                 "tiers" : [               
                     { "title": "S", "range": [1, 4], "color": "red"},
                     { "title": "A", "range": [5, 7], "color": "orange"},
-                    { "title": "B", "range": [8, 8], "color": "yellow"},
+                    { "title": "B", "range": [8, 8], "color": "cyan"},
                     { "title": "C", "range": [9, 11], "color": "green"},
-                    { "title": "D", "range": [12, 15], "color": "cyan"},
+                    { "title": "D", "range": [12, 15], "color": "yellow"},
                     { "title": "E", "range": [16, 17], "color": "blue"},
                     { "title": "F", "range": [18, 22], "color": "magenta"},
                     { "title": "G", "range": [23, 26], "color": "purple"}
@@ -282,14 +282,14 @@ var smash_data = {
 
             "Sept '08" : [
                 { "title": "Top", "range": [1,6], "color":"red" },
-                { "title": "High", "range": [7,16], "color":"yellow" },
+                { "title": "High", "range": [7,16], "color":"cyan" },
                 { "title": "Middle", "range": [17,26], "color":"green" },
                 { "title": "Low", "range": [27,37], "color":"blue" }
             ],
             "Jan '09" : [
                 { "title": "SS", "range": [1,1], "color":"red" },
                 { "title": "S", "range": [2,2], "color":"orange" },
-                { "title": "A", "range": [3,7], "color":"yellow" },
+                { "title": "A", "range": [3,7], "color":"cyan" },
                 { "title": "B", "range": [8,11], "color":"olive" },
                 { "title": "C", "range": [12,15], "color":"green" },
                 { "title": "D", "range": [16,20], "color":"cyan" },
@@ -300,7 +300,7 @@ var smash_data = {
             "June '09" : [
                 { "title": "S", "range": [1,6], "color":"red" },
                 { "title": "A", "range": [7,13], "color":"orange" },
-                { "title": "B", "range": [14,18], "color":"yellow" },
+                { "title": "B", "range": [14,18], "color":"cyan" },
                 { "title": "C", "range": [19,24], "color":"green" },
                 { "title": "D", "range": [25,28], "color":"cyan" },
                 { "title": "E", "range": [29,33], "color":"blue" },
@@ -309,7 +309,7 @@ var smash_data = {
             "Feb '10" : [
                 { "title": "S", "range": [1,1], "color":"red" },
                 { "title": "A", "range": [2,7], "color":"orange" },
-                { "title": "B", "range": [8,12], "color":"yellow" },
+                { "title": "B", "range": [8,12], "color":"cyan" },
                 { "title": "C", "range": [13,17], "color":"green" },
                 { "title": "D", "range": [18,22], "color":"cyan" },
                 { "title": "E", "range": [23,27], "color":"blue" },
@@ -319,7 +319,7 @@ var smash_data = {
             "Sept '10" : [
                 { "title": "S", "range": [1,1], "color":"red" },
                 { "title": "A", "range": [2,7], "color":"orange" },
-                { "title": "B", "range": [8,13], "color":"yellow" },
+                { "title": "B", "range": [8,13], "color":"cyan" },
                 { "title": "C", "range": [14,20], "color":"green" },
                 { "title": "D", "range": [21,28], "color":"cyan" },
                 { "title": "E", "range": [29,32], "color":"blue" },
@@ -329,7 +329,7 @@ var smash_data = {
             "July '11" : [
                 { "title": "S", "range": [1,1], "color":"red" },
                 { "title": "A", "range": [2,4], "color":"orange" },
-                { "title": "B", "range": [5,9], "color":"yellow" },
+                { "title": "B", "range": [5,9], "color":"cyan" },
                 { "title": "C", "range": [10,14], "color":"olive" },
                 { "title": "D", "range": [15,17], "color":"green" },
                 { "title": "E", "range": [18,22], "color":"cyan" },
@@ -341,7 +341,7 @@ var smash_data = {
                 { "title": "SS", "range": [1,1], "color":"red" },
                 { "title": "S", "range": [2,2], "color":"orange" },
                 { "title": "A+", "range": [3,4], "color":"light-orange" },
-                { "title": "A-", "range": [5,7], "color":"yellow" },
+                { "title": "A-", "range": [5,7], "color":"cyan" },
                 { "title": "B", "range": [8,10], "color":"olive" },
                 { "title": "C+", "range": [11,13], "color":"green" },
                 { "title": "C", "range": [14,17], "color":"cyan" },

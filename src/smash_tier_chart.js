@@ -97,7 +97,7 @@ function build_smash_tiers(select_target, platform, bounds) {
             ];
 
             var tier_group = tier_list_group.append("g")
-                .attr("class", "tier_group")
+                .attr("class", "smash_tier_group")
                 .attr("transform", "translate(" + 0 + "," + tier_y + ")");
 
             tier_group.append("path")
@@ -156,19 +156,36 @@ function build_smash_tiers(select_target, platform, bounds) {
 
     // Highlight the given character
     var highlight = function(character_name) {
-        var tier_groups = svg_root.selectAll(".tier_group")[0];
+        var tier_groups = svg_root.selectAll(".smash_tier_group")[0];
         tier_groups.forEach(function(tier_group) {
+            var has_character = false;
             var entries = d3.select(tier_group).selectAll(".smash_tier_entry")[0];
             entries.forEach(function(entry) {
-                if (entry.textContent == character_name)
-                    d3.select(entry).style("font-weight", "bold");
+                if (entry.textContent == character_name) {
+                    d3.select(entry)
+                        .style("font-weight", "bold")
+                    has_character = true;
+                }
+                else
+                    d3.select(entry).style("opacity", .2);
             });
+
+            if (!has_character)
+                d3.select(tier_group).style("opacity", 0.2);
         });
     };
 
     // Undo all highlights
     var fade = function() {
+        var tier_groups = svg_root.selectAll(".smash_tier_group")[0];
+        tier_groups.forEach(function(group) { d3.select(group).style("opacity", ""); });
+
         var entries = svg_root.selectAll(".smash_tier_entry")[0];
-        entries.forEach(function(entry) { d3.select(entry).style("font-weight", ""); });
+        entries.forEach(function(entry) { 
+            d3.select(entry)
+                .style("font-weight", "")
+                .style("font-size", "")
+                .style("opacity", "");
+        });
     } 
 }
