@@ -21,7 +21,7 @@
 .smash_tier_entry {
     font-family: 'Tahoma';
     font-size: 8.5pt;
-    pointer-events: none; /* prevents cursor from interactive with text element */
+   /* pointer-events: none; /* prevents cursor from interactive with text element */
 }
 
 .char_label_hover {

@@ -58,7 +58,7 @@ function build_smash_tiers(select_target, platform, bounds) {
             })
         }, "")
     };
-
+   
 
     // Create tier lists
     for (var i = 0; i < tier_lists.length; ++i) {
@@ -80,6 +80,7 @@ function build_smash_tiers(select_target, platform, bounds) {
         var tier_y_pad = (tier_y_whitespace - tier_y) / (tiers.length - 1);
 
         var tier_list_group = svg_root.append("g")
+            .attr("class", "tier_list")
             .attr("transform", "translate(" + tier_x + ",0)");
 
         // Create tier list
@@ -96,6 +97,7 @@ function build_smash_tiers(select_target, platform, bounds) {
             ];
 
             var tier_group = tier_list_group.append("g")
+                .attr("class", "tier_group")
                 .attr("transform", "translate(" + 0 + "," + tier_y + ")");
 
             tier_group.append("path")
@@ -127,17 +129,21 @@ function build_smash_tiers(select_target, platform, bounds) {
                 .attr("width", tier_width)
                 .style("text-anchor", "middle")
                 .text(function(d) { return tier.title });
-            
+                    
             // Characters in tier
             for (var rank = tier.range[0]; rank <= tier.range[1]; ++rank) {
                 var character = sorted_characters[rank];
+                var character_name = character.short_name ? character.short_name : character.name;
+
                 tier_group.append("text")
                     .attr("class", "smash_tier_entry")
                     .attr("x", tier_width * .5)
                     .attr("y", 32 + (rank - tier.range[0]) * 15)
                     .attr("width", tier_width)
                     .style("text-anchor", "middle")
-                    .text(function(d) { return character.short_name ? character.short_name : character.name });
+                    .text(function(d) { return character_name; })
+                    .on("mouseover", function(d) { highlight(this.textContent); })
+                    .on("mouseout", function(d) { fade(); })
             }
 
             // Slide tier_y down for next tier entry
@@ -147,4 +153,22 @@ function build_smash_tiers(select_target, platform, bounds) {
         // Slide tier_x to right for next tier list (column)
         tier_x = tier_x + tier_width + tier_x_pad;
     }
+
+    // Highlight the given character
+    var highlight = function(character_name) {
+        var tier_groups = svg_root.selectAll(".tier_group")[0];
+        tier_groups.forEach(function(tier_group) {
+            var entries = d3.select(tier_group).selectAll(".smash_tier_entry")[0];
+            entries.forEach(function(entry) {
+                if (entry.textContent == character_name)
+                    d3.select(entry).style("font-weight", "bold");
+            });
+        });
+    };
+
+    // Undo all highlights
+    var fade = function() {
+        var entries = svg_root.selectAll(".smash_tier_entry")[0];
+        entries.forEach(function(entry) { d3.select(entry).style("font-weight", ""); });
+    } 
 }
