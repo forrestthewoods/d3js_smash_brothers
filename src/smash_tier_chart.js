@@ -135,15 +135,24 @@ function build_smash_tiers(select_target, platform, bounds) {
                 var character = sorted_characters[rank];
                 var character_name = character.short_name ? character.short_name : character.name;
 
+                var entry_y = 32 + (rank - tier.range[0]) * 15;
                 tier_group.append("text")
                     .attr("class", "smash_tier_entry")
                     .attr("x", tier_width * .5)
-                    .attr("y", 32 + (rank - tier.range[0]) * 15)
+                    .attr("y", entry_y)
                     .attr("width", tier_width)
                     .style("text-anchor", "middle")
-                    .text(function(d) { return character_name; })
-                    .on("mouseover", function(d) { highlight(this.textContent); })
-                    .on("mouseout", function(d) { fade(); })
+                    .text(function(d) { return character_name; });
+
+                tier_group.append("rect")
+                    .attr("class", "smash_tier_entry_hover")
+                    .attr("x", 0)
+                    .attr("y", entry_y - 11)
+                    .attr("width", tier_width)
+                    .attr("height", tier_entry_height + 1)
+                    .attr("id", character_name)
+                    .on("mouseover", function(d) { highlight(this.id) })
+                    .on("mouseout", function(d) { fade() });
             }
 
             // Slide tier_y down for next tier entry
@@ -162,16 +171,19 @@ function build_smash_tiers(select_target, platform, bounds) {
             var entries = d3.select(tier_group).selectAll(".smash_tier_entry")[0];
             entries.forEach(function(entry) {
                 if (entry.textContent == character_name) {
-                    d3.select(entry)
-                        .style("font-weight", "bold")
+                    d3.select(entry).style("font-weight", "bold")
                     has_character = true;
                 }
-                else
-                    d3.select(entry).style("opacity", .2);
             });
 
             if (!has_character)
-                d3.select(tier_group).style("opacity", 0.2);
+                d3.select(tier_group).style("opacity", 0.05);
+            else {
+                entries.forEach(function(entry) {
+                    if (entry.textContent != character_name)
+                        d3.select(entry).style("opacity", 0.05);
+                });
+            }
         });
     };
 

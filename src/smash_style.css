@@ -11,23 +11,6 @@
     pointer-events: none;  /* prevents cursor from interactive with text element */
 }
 
-.smash_tier_title {
-    font-family: 'Tahoma';
-    font-weight: bold;
-    font-size: 9pt;
-    pointer-events: none; /* prevents cursor from interactive with text element */
-}
-
-.smash_tier_entry {
-    font-family: 'Tahoma';
-    font-size: 8.5pt;
-   /* pointer-events: none; /* prevents cursor from interactive with text element */
-}
-
-.smash_tier_group {
-    transition: opacity .25s ease-out;
-}
-
 .char_label_hover {
    opacity:0;
    style:fill;
@@ -45,4 +28,29 @@
     opacity: 0;
     stroke: green;
     stroke-width: 12px;
+}
+
+/* ==================================
+Used by smash_rankings_chart.js
+================================== */
+.smash_tier_title {
+    font-family: 'Tahoma';
+    font-weight: bold;
+    font-size: 9pt;
+    pointer-events: none; /* prevents cursor from interactive with text element */
+}
+
+.smash_tier_entry {
+    font-family: 'Tahoma';
+    font-size: 8.5pt;
+    pointer-events: none; /* prevents cursor from interactive with text element */
+    transition: opacity .5s ease-out;
+}
+
+.smash_tier_entry_hover {
+    opacity:0;
+}
+
+.smash_tier_group {
+    transition: opacity .5s ease-out;
 }
