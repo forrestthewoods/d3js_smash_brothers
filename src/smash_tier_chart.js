@@ -68,7 +68,7 @@ function build_smash_tiers(select_target, platform, bounds) {
         for (var j = 0; j < characters.length; ++j) {
             var character = characters[j];
             var rankings = character.rankings;
-            var rank = rankings[i + (rankings.length - tier_lists.length)];
+            var rank = rankings[smash_data_set.dates.indexOf(tier_list.date)];
             sorted_characters[rank] = character;
         }
 
