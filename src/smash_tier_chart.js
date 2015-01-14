@@ -1,4 +1,4 @@
-function build_smash_tiers(select_target, platform, bounds) {
+function build_smash_tiers(select_target, platform, tier_dates, bounds) {
     var smash_data_set = smash_data[platform];
 
     var total_width = bounds.plot.width + bounds.margin.left + bounds.margin.right;
@@ -31,6 +31,8 @@ function build_smash_tiers(select_target, platform, bounds) {
 
     // Tier Lists to be displayed
     var tier_lists = smash_data_set.tier_lists;
+    if (tier_dates.length > 0)
+        tier_lists = tier_lists.filter(function(e) { return tier_dates.indexOf(e.date) != -1 });
 
     // Spacing data
     var tier_width = 73;
