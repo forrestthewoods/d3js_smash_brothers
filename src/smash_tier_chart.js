@@ -15,6 +15,7 @@ function build_smash_tiers(select_target, platform, tier_dates, bounds) {
 
     // For converting textual colors in smash data to actual RGBs
     var tier_color_map = {
+        /*
         red : { "dark" : "#ff0000", "medium" : "#ff7f7f", "light" : "#ffbfbf" },
         orange : { "dark" : "#ff7f00", "medium" : "#ffbf7f", "light" : "#ffdfbf" },
         yellow : { "dark" : "#ffff00", "medium" : "#ffff7f", "light" : "#ffffbf" },
@@ -23,6 +24,16 @@ function build_smash_tiers(select_target, platform, tier_dates, bounds) {
         blue : { "dark" : "#0000ff", "medium" : "#7f7fff", "light" : "#bfbfff" },
         magenta : { "dark" : "#ff00ff", "medium" : "#ff7fff", "light" : "#ffbfff" },
         purple : { "dark" : "#7f007f", "medium" : "#bf7fbf", "light" : "#dfbfdf" }
+        */
+                // dark = border, medium = background, light = header
+        red : { "dark" : "#d15f4c", "medium" : "#ff8a76", "light" : "#f8b1a5", "text":"#3f1109" },
+        orange : { "dark" : "#c48847", "medium" : "#f4b761", "light" : "#ffd191", "text":"#4d3105" },
+        yellow : { "dark" : "#8e973f", "medium" : "#e2f38e", "light" : "#f3ffb9", "text":"#313a0f" },
+        green : { "dark" : "#64aa78", "medium" : "#adebbf", "light" : "#c7f9d6", "text":"#274225" },
+        cyan : { "dark" : "#3e7898", "medium" : "#b9ddf1", "light" : "#caecff", "text":"#183748t" },
+        blue : { "dark" : "#3e7898", "medium" : "#b9ddf1", "light" : "#caecff", "text":"#183748t" },
+        magenta : { "dark" : "#cac3f2", "medium" : "#8066b5", "light" : "#e7e3ff", "text":"#37255b" },
+        purple : { "dark" : "#be94a9", "medium" : "#deb9cb", "light" : "#f1ccde", "text":"#492235" }
     };
 
     // Data for tier lists
@@ -129,6 +140,7 @@ function build_smash_tiers(select_target, platform, tier_dates, bounds) {
                 .attr("x", tier_width * .5)
                 .attr("y", 15)
                 .attr("width", tier_width)
+                .attr("fill", tier_color_map[tier.color].text)
                 .style("text-anchor", "middle")
                 .text(function(d) { return tier.title });
                     
@@ -144,6 +156,7 @@ function build_smash_tiers(select_target, platform, tier_dates, bounds) {
                     .attr("y", entry_y)
                     .attr("width", tier_width)
                     .style("text-anchor", "middle")
+                    .attr("fill", tier_color_map[tier.color].text)
                     .text(function(d) { return character_name; });
 
                 tier_group.append("rect")
