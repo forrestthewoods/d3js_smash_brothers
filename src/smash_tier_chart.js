@@ -28,10 +28,10 @@ function build_smash_tiers(select_target, platform, tier_dates, bounds) {
                 // dark = border, medium = background, light = header
         red : { "dark" : "#d15f4c", "medium" : "#ff8a76", "light" : "#f8b1a5", "text":"#3f1109" },
         orange : { "dark" : "#c48847", "medium" : "#f4b761", "light" : "#ffd191", "text":"#4d3105" },
-        yellow : { "dark" : "#8e973f", "medium" : "#e2f38e", "light" : "#f3ffb9", "text":"#313a0f" },
-        green : { "dark" : "#64aa78", "medium" : "#AAF2AC", "light" : "#c7f9d6", "text":"#274225" },
+        yellow : { "dark" : "#8e973f", "medium" : "#EBF38E", "light" : "#f3ffb9", "text":"#313a0f" },
+        green : { "dark" : "#64aa78", "medium" : "#B3F5B5", "light" : "#c7f9d6", "text":"#274225" },
         cyan : { "dark" : "#72D4D2", "medium" : "#B5F6F7", "light" : "#E3FFFF", "text":"#154D4C" },
-        blue : { "dark" : "#527BAB", "medium" : "#B9D3F1", "light" : "#DBECFF", "text":"#183748" },
+        blue : { "dark" : "#527BAB", "medium" : "#B0D5FF", "light" : "#DBECFF", "text":"#183748" },
         magenta : { "dark" : "#9166B5", "medium" : "#DBC3F2", "light" : "#EEE3FF", "text":"#52255B" },
         purple : { "dark" : "#E6AAC8", "medium" : "#FFCFE6", "light" : "#FFF0F7", "text":"#610C36" }
     };
