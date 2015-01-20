@@ -101,7 +101,7 @@ var smash_data = {
                     { "title": "Top", "range": [1, 5], "color": "red" },
                     { "title": "Upper", "range": [6, 12], "color": "orange" },
                     { "title": "Middle", "range": [13, 21], "color": "green" },
-                    { "title": "Bottom", "range": [22, 26], "color": "magenta" }
+                    { "title": "Bottom", "range": [22, 26], "color": "purple" }
                 ]
             },
 
@@ -112,7 +112,7 @@ var smash_data = {
                     { "title": "Upper", "range": [5, 12], "color": "orange"},
                     { "title": "Middle", "range": [13, 20], "color": "green"},
                     { "title": "Low", "range": [21, 23], "color": "blue"},
-                    { "title": "Bottom", "range": [24, 26], "color": "magenta"}
+                    { "title": "Bottom", "range": [24, 26], "color": "purple"}
                 ]    
             },
      
@@ -124,7 +124,7 @@ var smash_data = {
                     { "title": "High", "range": [6, 12], "color": "cyan"},
                     { "title": "Middle", "range": [13, 19], "color": "green"},
                     { "title": "Low", "range": [20, 23], "color": "blue"},
-                    { "title": "Bottom", "range": [24, 26], "color": "magenta"}
+                    { "title": "Bottom", "range": [24, 26], "color": "purple"}
                 ]
             },
             
@@ -136,7 +136,7 @@ var smash_data = {
                     { "title": "High", "range": [9, 12], "color": "cyan"},
                     { "title": "Middle", "range": [13, 19], "color": "green"},
                     { "title": "Low", "range": [20, 24], "color": "blue"},
-                    { "title": "Bottom", "range": [25, 26], "color": "magenta"}
+                    { "title": "Bottom", "range": [25, 26], "color": "purple"}
                 ]
             },
 
@@ -148,7 +148,7 @@ var smash_data = {
                     { "title": "High", "range": [8, 12], "color": "cyan"},
                     { "title": "Middle", "range": [13, 18], "color": "green"},
                     { "title": "Low", "range": [19, 24], "color": "blue"},
-                    { "title": "Bottom", "range": [25, 26], "color": "magenta"}
+                    { "title": "Bottom", "range": [25, 26], "color": "purple"}
                 ]
             },
 
@@ -159,7 +159,7 @@ var smash_data = {
                     { "title": "Upper", "range": [3, 5], "color": "orange"},
                     { "title": "Middle", "range": [6, 12], "color": "green"},
                     { "title": "Low", "range": [13, 18], "color": "blue"},
-                    { "title": "Bottom", "range": [19, 26], "color": "magenta"}
+                    { "title": "Bottom", "range": [19, 26], "color": "purple"}
                 ]
             },
 
@@ -170,7 +170,7 @@ var smash_data = {
                     { "title": "Upper", "range": [5, 8], "color": "orange"},
                     { "title": "Middle", "range": [9, 14], "color": "green"},
                     { "title": "Low", "range": [15, 20], "color": "blue"},
-                    { "title": "Bottom", "range": [21, 26], "color": "magenta"}
+                    { "title": "Bottom", "range": [21, 26], "color": "purple"}
                 ]
             },
 
@@ -182,8 +182,8 @@ var smash_data = {
                     { "title": "High", "range": [6, 7], "color": "cyan"},
                     { "title": "Middle", "range": [8, 11], "color": "green"},
                     { "title": "Low", "range": [12, 16], "color": "blue"},
-                    { "title": "Bottom", "range": [17, 21], "color": "magenta"},
-                    { "title": "Neglible", "range": [22, 26], "color": "purple"}
+                    { "title": "Bottom", "range": [17, 21], "color": "purple"},
+                    { "title": "Neglible", "range": [22, 26], "color": "pink"}
                 ]
             },
 
@@ -196,8 +196,8 @@ var smash_data = {
                     { "title": "C", "range": [9, 11], "color": "green"},
                     { "title": "D", "range": [12, 15], "color": "yellow"},
                     { "title": "E", "range": [16, 17], "color": "blue"},
-                    { "title": "F", "range": [18, 22], "color": "magenta"},
-                    { "title": "G", "range": [23, 26], "color": "purple"}
+                    { "title": "F", "range": [18, 22], "color": "purple"},
+                    { "title": "G", "range": [23, 26], "color": "pink"}
                 ]
             },
 
@@ -207,7 +207,7 @@ var smash_data = {
                     { "title": "S", "range": [1, 8], "color": "red"},
                     { "title": "A", "range": [9, 14], "color": "orange"},
                     { "title": "B", "range": [15, 22], "color": "green"},
-                    { "title": "F", "range": [23, 26], "color": "magenta"}
+                    { "title": "F", "range": [23, 26], "color": "purple"}
                 ]
             }
         ],
@@ -294,8 +294,8 @@ var smash_data = {
                 { "title": "C", "range": [12,15], "color":"green" },
                 { "title": "D", "range": [16,20], "color":"cyan" },
                 { "title": "E", "range": [21,26], "color":"blue" },
-                { "title": "F", "range": [27,33], "color":"magenta" },
-                { "title": "G", "range": [34,37], "color":"purple" }
+                { "title": "F", "range": [27,33], "color":"purple" },
+                { "title": "G", "range": [34,37], "color":"pink" }
             ],
             "June '09" : [
                 { "title": "S", "range": [1,6], "color":"red" },
@@ -304,7 +304,7 @@ var smash_data = {
                 { "title": "C", "range": [19,24], "color":"green" },
                 { "title": "D", "range": [25,28], "color":"cyan" },
                 { "title": "E", "range": [29,33], "color":"blue" },
-                { "title": "F", "range": [34,37], "color":"magenta" }
+                { "title": "F", "range": [34,37], "color":"purple" }
             ],
             "Feb '10" : [
                 { "title": "S", "range": [1,1], "color":"red" },
@@ -313,8 +313,8 @@ var smash_data = {
                 { "title": "C", "range": [13,17], "color":"green" },
                 { "title": "D", "range": [18,22], "color":"cyan" },
                 { "title": "E", "range": [23,27], "color":"blue" },
-                { "title": "F", "range": [28,34], "color":"magenta" },
-                { "title": "G", "range": [35,37], "color":"purple" }
+                { "title": "F", "range": [28,34], "color":"purple" },
+                { "title": "G", "range": [35,37], "color":"pink" }
             ],
             "Sept '10" : [
                 { "title": "S", "range": [1,1], "color":"red" },
@@ -323,8 +323,8 @@ var smash_data = {
                 { "title": "C", "range": [14,20], "color":"green" },
                 { "title": "D", "range": [21,28], "color":"cyan" },
                 { "title": "E", "range": [29,32], "color":"blue" },
-                { "title": "F", "range": [33,37], "color":"magenta" },
-                { "title": "G", "range": [38,38], "color":"purple" }
+                { "title": "F", "range": [33,37], "color":"purple" },
+                { "title": "G", "range": [38,38], "color":"pink" }
             ],
             "July '11" : [
                 { "title": "S", "range": [1,1], "color":"red" },
@@ -334,8 +334,8 @@ var smash_data = {
                 { "title": "D", "range": [15,17], "color":"green" },
                 { "title": "E", "range": [18,22], "color":"cyan" },
                 { "title": "F", "range": [23,29], "color":"blue" },
-                { "title": "G", "range": [30,34], "color":"magenta" },
-                { "title": "H", "range": [35,38], "color":"purple" }
+                { "title": "G", "range": [30,34], "color":"purple" },
+                { "title": "H", "range": [35,38], "color":"pink" }
             ],
             "April '12" : [
                 { "title": "SS", "range": [1,1], "color":"red" },
@@ -347,8 +347,8 @@ var smash_data = {
                 { "title": "C", "range": [14,17], "color":"cyan" },
                 { "title": "C-", "range": [18,19], "color":"ice-blue" },
                 { "title": "D", "range": [20,27], "color":"blue" },
-                { "title": "E", "range": [28,30], "color":"magenta" },
-                { "title": "F", "range": [31,38], "color":"purple" }
+                { "title": "E", "range": [28,30], "color":"purple" },
+                { "title": "F", "range": [31,38], "color":"pink" }
             ],
             "April '13" : [
             ]

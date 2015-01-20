@@ -34,7 +34,7 @@
 Used by smash_rankings_chart.js
 ================================== */
 .smash_tier_title {
-    font-family: 'Tahoma';
+    font-family: 'Tahoma', 'Helvetica', sans-serif;
     font-weight: bold;
     font-size: 9pt;
     pointer-events: none; /* prevents cursor from interactive with text element */
