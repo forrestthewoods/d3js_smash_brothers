@@ -41,7 +41,7 @@ Used by smash_rankings_chart.js
 }
 
 .smash_tier_entry {
-    font-family: 'Tahoma';
+    font-family: 'Tahoma', 'Helvetica', sans-serif;
     font-size: 8.5pt;
     pointer-events: none; /* prevents cursor from interactive with text element */
     transition: opacity .5s ease-out;
