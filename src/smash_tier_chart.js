@@ -76,8 +76,8 @@ function build_smash_tiers(select_target, platform, tier_dates, bounds) {
 
         var tiers = tier_list.tiers;
 
-        var tier_y = 5;
-        var tier_y_whitespace = total_height - (characters.length * tier_entry_height) - (tiers.length * (tier_title_height + tier_entry_base)) - tier_y;
+        var tier_y = bounds.margin.top;
+        var tier_y_whitespace = total_height - (characters.length * tier_entry_height) - (tiers.length * (tier_title_height + tier_entry_base)) - (bounds.margin.top + bounds.margin.bottom);
 
         var tier_y_pad = (tier_y_whitespace - tier_y) / (tiers.length - 1);
 
@@ -163,9 +163,20 @@ function build_smash_tiers(select_target, platform, tier_dates, bounds) {
             tier_y = tier_y + tier_height + tier_y_pad;
         }
 
+        console.log(tier_list);
+        console.log(tier_list.date);
+        tier_list_group.append("text")
+            .attr("class", "smash_tier_entry")
+            .attr("x", tier_width * .5)
+            .attr("y", bounds.plot.height + 20)
+            .style("text-anchor", "middle")
+            .text(function(d) { return tier_list.date });
+
         // Slide tier_x to right for next tier list (column)
         tier_x = tier_x + tier_width + tier_x_pad;
     }
+
+
 
     // Highlight the given character
     var highlight = function(character_name) {
