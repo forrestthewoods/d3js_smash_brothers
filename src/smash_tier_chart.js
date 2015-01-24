@@ -15,14 +15,17 @@ function build_smash_tiers(select_target, platform, tier_dates, bounds) {
 
     // For converting textual colors in smash data to actual RGBs
     var tier_color_map = {
-        red : { "dark" : "#d15f4c", "medium" : "#ff8a76", "light" : "#f8b1a5", "text":"#3f1109" },
-        orange : { "dark" : "#c48847", "medium" : "#f4b761", "light" : "#ffd191", "text":"#4d3105" },
-        yellow : { "dark" : "#8e973f", "medium" : "#EBF38E", "light" : "#f3ffb9", "text":"#313a0f" },
-        green : { "dark" : "#64aa78", "medium" : "#B3F5B5", "light" : "#c7f9d6", "text":"#274225" },
-        cyan : { "dark" : "#72D4D2", "medium" : "#B5F6F7", "light" : "#E3FFFF", "text":"#154D4C" },
-        blue : { "dark" : "#527BAB", "medium" : "#B0D5FF", "light" : "#DBECFF", "text":"#183748" },
-        purple : { "dark" : "#9166B5", "medium" : "#DBC3F2", "light" : "#EEE3FF", "text":"#52255B" },
-        pink : { "dark" : "#E6AAC8", "medium" : "#FFCFE6", "light" : "#FFF0F7", "text":"#610C36" }
+        "red" : { "dark" : "#d15f4c", "medium" : "#ff8a76", "light" : "#f8b1a5", "text":"#3f1109" },
+        "orange" : { "dark" : "#c48847", "medium" : "#f4b761", "light" : "#ffd191", "text":"#4d3105" },
+        "light-orange" : { "dark" : "#c48847", "medium" : "#f4b761", "light" : "#ffd191", "text":"#4d3105" },
+        "yellow" : { "dark" : "#8e973f", "medium" : "#EBF38E", "light" : "#f3ffb9", "text":"#313a0f" },
+        "olive" : { "dark" : "#8e973f", "medium" : "#EBF38E", "light" : "#f3ffb9", "text":"#313a0f" },
+        "green" : { "dark" : "#64aa78", "medium" : "#B3F5B5", "light" : "#c7f9d6", "text":"#274225" },
+        "cyan" : { "dark" : "#72D4D2", "medium" : "#B5F6F7", "light" : "#E3FFFF", "text":"#154D4C" },
+        "blue" : { "dark" : "#527BAB", "medium" : "#B0D5FF", "light" : "#DBECFF", "text":"#183748" },
+        "ice-blue" : { "dark" : "#527BAB", "medium" : "#B0D5FF", "light" : "#DBECFF", "text":"#183748" },
+        "purple" : { "dark" : "#9166B5", "medium" : "#DBC3F2", "light" : "#EEE3FF", "text":"#52255B" },
+        "pink" : { "dark" : "#E6AAC8", "medium" : "#FFCFE6", "light" : "#FFF0F7", "text":"#610C36" }
     };
 
     // Data for tier lists
@@ -61,24 +64,25 @@ function build_smash_tiers(select_target, platform, tier_dates, bounds) {
             })
         }, "")
     };
-   
 
     // Create tier lists
     for (var i = 0; i < tier_lists.length; ++i) {
         var tier_list = tier_lists[i];
 
         // Order characters by ranking for this tier lists
+        var date_index = smash_data_set.dates.indexOf(tier_list.date);
         for (var j = 0; j < characters.length; ++j) {
             var character = characters[j];
             var rankings = character.rankings;
-            var rank = rankings[smash_data_set.dates.indexOf(tier_list.date)];
+            var rank = rankings[date_index];
             sorted_characters[rank] = character;
         }
 
         var tiers = tier_list.tiers;
+        var char_count = tiers[tiers.length-1].range[1];
 
         var tier_y = bounds.margin.top;
-        var tier_y_whitespace = total_height - (characters.length * tier_entry_height) - (tiers.length * (tier_title_height + tier_entry_base)) - (bounds.margin.top + bounds.margin.bottom);
+        var tier_y_whitespace = total_height - (char_count * tier_entry_height) - (tiers.length * (tier_title_height + tier_entry_base)) - (bounds.margin.top + bounds.margin.bottom);
 
         var tier_y_pad = (tier_y_whitespace - tier_y) / (tiers.length - 1);
 

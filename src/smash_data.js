@@ -278,81 +278,121 @@ var smash_data = {
             "kongs" : [ "Donkey Kong", "Diddy Kong"]
         },
 
-        "tiers" : {
+        "tier_lists" : [
 
-            "Sept '08" : [
-                { "title": "Top", "range": [1,6], "color":"red" },
-                { "title": "High", "range": [7,16], "color":"cyan" },
-                { "title": "Middle", "range": [17,26], "color":"green" },
-                { "title": "Low", "range": [27,37], "color":"blue" }
-            ],
-            "Jan '09" : [
-                { "title": "SS", "range": [1,1], "color":"red" },
-                { "title": "S", "range": [2,2], "color":"orange" },
-                { "title": "A", "range": [3,7], "color":"cyan" },
-                { "title": "B", "range": [8,11], "color":"olive" },
-                { "title": "C", "range": [12,15], "color":"green" },
-                { "title": "D", "range": [16,20], "color":"cyan" },
-                { "title": "E", "range": [21,26], "color":"blue" },
-                { "title": "F", "range": [27,33], "color":"purple" },
-                { "title": "G", "range": [34,37], "color":"pink" }
-            ],
-            "June '09" : [
-                { "title": "S", "range": [1,6], "color":"red" },
-                { "title": "A", "range": [7,13], "color":"orange" },
-                { "title": "B", "range": [14,18], "color":"cyan" },
-                { "title": "C", "range": [19,24], "color":"green" },
-                { "title": "D", "range": [25,28], "color":"cyan" },
-                { "title": "E", "range": [29,33], "color":"blue" },
-                { "title": "F", "range": [34,37], "color":"purple" }
-            ],
-            "Feb '10" : [
-                { "title": "S", "range": [1,1], "color":"red" },
-                { "title": "A", "range": [2,7], "color":"orange" },
-                { "title": "B", "range": [8,12], "color":"cyan" },
-                { "title": "C", "range": [13,17], "color":"green" },
-                { "title": "D", "range": [18,22], "color":"cyan" },
-                { "title": "E", "range": [23,27], "color":"blue" },
-                { "title": "F", "range": [28,34], "color":"purple" },
-                { "title": "G", "range": [35,37], "color":"pink" }
-            ],
-            "Sept '10" : [
-                { "title": "S", "range": [1,1], "color":"red" },
-                { "title": "A", "range": [2,7], "color":"orange" },
-                { "title": "B", "range": [8,13], "color":"cyan" },
-                { "title": "C", "range": [14,20], "color":"green" },
-                { "title": "D", "range": [21,28], "color":"cyan" },
-                { "title": "E", "range": [29,32], "color":"blue" },
-                { "title": "F", "range": [33,37], "color":"purple" },
-                { "title": "G", "range": [38,38], "color":"pink" }
-            ],
-            "July '11" : [
-                { "title": "S", "range": [1,1], "color":"red" },
-                { "title": "A", "range": [2,4], "color":"orange" },
-                { "title": "B", "range": [5,9], "color":"cyan" },
-                { "title": "C", "range": [10,14], "color":"olive" },
-                { "title": "D", "range": [15,17], "color":"green" },
-                { "title": "E", "range": [18,22], "color":"cyan" },
-                { "title": "F", "range": [23,29], "color":"blue" },
-                { "title": "G", "range": [30,34], "color":"purple" },
-                { "title": "H", "range": [35,38], "color":"pink" }
-            ],
-            "April '12" : [
-                { "title": "SS", "range": [1,1], "color":"red" },
-                { "title": "S", "range": [2,2], "color":"orange" },
-                { "title": "A+", "range": [3,4], "color":"light-orange" },
-                { "title": "A-", "range": [5,7], "color":"cyan" },
-                { "title": "B", "range": [8,10], "color":"olive" },
-                { "title": "C+", "range": [11,13], "color":"green" },
-                { "title": "C", "range": [14,17], "color":"cyan" },
-                { "title": "C-", "range": [18,19], "color":"ice-blue" },
-                { "title": "D", "range": [20,27], "color":"blue" },
-                { "title": "E", "range": [28,30], "color":"purple" },
-                { "title": "F", "range": [31,38], "color":"pink" }
-            ],
-            "April '13" : [
-            ]
-        },
+            {
+                "date":"Sept '08",
+                "tiers": [
+                    { "title": "Top", "range": [1,6], "color":"red" },
+                    { "title": "High", "range": [7,16], "color":"cyan" },
+                    { "title": "Middle", "range": [17,26], "color":"green" },
+                    { "title": "Low", "range": [27,37], "color":"blue" }
+                ]
+            },
+
+            {
+                "date":"Jan '09",
+                "tiers": [
+                    { "title": "SS", "range": [1,1], "color":"red" },
+                    { "title": "S", "range": [2,2], "color":"orange" },
+                    { "title": "A", "range": [3,7], "color":"cyan" },
+                    { "title": "B", "range": [8,11], "color":"olive" },
+                    { "title": "C", "range": [12,15], "color":"green" },
+                    { "title": "D", "range": [16,20], "color":"cyan" },
+                    { "title": "E", "range": [21,26], "color":"blue" },
+                    { "title": "F", "range": [27,33], "color":"purple" },
+                    { "title": "G", "range": [34,37], "color":"pink" }
+                ]
+            },
+
+            {
+                "date":"June '09",
+                "tiers": [
+                    { "title": "S", "range": [1,6], "color":"red" },
+                    { "title": "A", "range": [7,13], "color":"orange" },
+                    { "title": "B", "range": [14,18], "color":"cyan" },
+                    { "title": "C", "range": [19,24], "color":"green" },
+                    { "title": "D", "range": [25,28], "color":"cyan" },
+                    { "title": "E", "range": [29,33], "color":"blue" },
+                    { "title": "F", "range": [34,37], "color":"purple" }
+                ]
+            },
+
+            {
+                "date":"Feb '10",
+                "tiers": [
+                    { "title": "S", "range": [1,1], "color":"red" },
+                    { "title": "A", "range": [2,7], "color":"orange" },
+                    { "title": "B", "range": [8,12], "color":"cyan" },
+                    { "title": "C", "range": [13,17], "color":"green" },
+                    { "title": "D", "range": [18,22], "color":"cyan" },
+                    { "title": "E", "range": [23,27], "color":"blue" },
+                    { "title": "F", "range": [28,34], "color":"purple" },
+                    { "title": "G", "range": [35,37], "color":"pink" }
+                ]
+            },
+
+            {
+                "date":"Sept '10",
+                "tiers": [
+                    { "title": "S", "range": [1,1], "color":"red" },
+                    { "title": "A", "range": [2,7], "color":"orange" },
+                    { "title": "B", "range": [8,13], "color":"cyan" },
+                    { "title": "C", "range": [14,20], "color":"green" },
+                    { "title": "D", "range": [21,28], "color":"cyan" },
+                    { "title": "E", "range": [29,32], "color":"blue" },
+                    { "title": "F", "range": [33,37], "color":"purple" },
+                    { "title": "G", "range": [38,38], "color":"pink" }
+                ]
+            },
+
+            {
+                "date":"July '11",
+                "tiers": [
+                    { "title": "S", "range": [1,1], "color":"red" },
+                    { "title": "A", "range": [2,4], "color":"orange" },
+                    { "title": "B", "range": [5,9], "color":"cyan" },
+                    { "title": "C", "range": [10,14], "color":"olive" },
+                    { "title": "D", "range": [15,17], "color":"green" },
+                    { "title": "E", "range": [18,22], "color":"cyan" },
+                    { "title": "F", "range": [23,29], "color":"blue" },
+                    { "title": "G", "range": [30,34], "color":"purple" },
+                    { "title": "H", "range": [35,38], "color":"pink" }
+                ]
+            },
+
+            {
+                "date":"April '12",
+                "tiers": [
+                    { "title": "S", "range": [1,1], "color":"red" },
+                    { "title": "A", "range": [2,5], "color":"orange" },
+                    { "title": "B", "range": [6,9], "color":"cyan" },
+                    { "title": "C", "range": [10,13], "color":"olive" },
+                    { "title": "D", "range": [14,18], "color":"green" },
+                    { "title": "E", "range": [19,25], "color":"cyan" },
+                    { "title": "F", "range": [26,29], "color":"blue" },
+                    { "title": "G", "range": [30,34], "color":"purple" },
+                    { "title": "H", "range": [35,38], "color":"pink" }
+                ]
+            },
+
+            {
+                "date":"April '13",
+                "tiers":[
+                    { "title": "SS", "range": [1,1], "color":"red" },
+                    { "title": "S", "range": [2,2], "color":"orange" },
+                    { "title": "A+", "range": [3,4], "color":"light-orange" },
+                    { "title": "A-", "range": [5,7], "color":"cyan" },
+                    { "title": "B", "range": [8,10], "color":"olive" },
+                    { "title": "C+", "range": [11,13], "color":"green" },
+                    { "title": "C", "range": [14,17], "color":"cyan" },
+                    { "title": "C-", "range": [18,19], "color":"ice-blue" },
+                    { "title": "D", "range": [20,27], "color":"blue" },
+                    { "title": "E", "range": [28,30], "color":"purple" },
+                    { "title": "F", "range": [31,38], "color":"pink" }
+                ]
+            }
+        ],
 
         "characters" : [
             { "name":"Meta Knight", "rankings":[1,1,1,1,1,1,1,1] },
