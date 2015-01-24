@@ -33,6 +33,7 @@ function build_smash_tiers(select_target, platform, tier_dates, bounds) {
     var tier_lists = smash_data_set.tier_lists;
     if (tier_dates.length > 0)
         tier_lists = tier_lists.filter(function(e) { return tier_dates.indexOf(e.date) != -1 });
+    var enable_hover = tier_dates.length != 1;
 
     // Spacing data
     var tier_width = 73;
@@ -138,6 +139,7 @@ function build_smash_tiers(select_target, platform, tier_dates, bounds) {
                 var character = sorted_characters[rank];
                 var character_name = character.short_name ? character.short_name : character.name;
 
+                // Append text label for character
                 var entry_y = 32 + (rank - tier.range[0]) * 15;
                 tier_group.append("text")
                     .attr("class", "smash_tier_entry")
@@ -148,23 +150,23 @@ function build_smash_tiers(select_target, platform, tier_dates, bounds) {
                     .attr("fill", tier_color_map[tier.color].text)
                     .text(function(d) { return character_name; });
 
-                tier_group.append("rect")
-                    .attr("class", "smash_tier_entry_hover")
-                    .attr("x", 0)
-                    .attr("y", entry_y - 11)
-                    .attr("width", tier_width)
-                    .attr("height", tier_entry_height + 1)
-                    .attr("id", character_name)
-                    .on("mouseover", function(d) { highlight(this.id) })
-                    .on("mouseout", function(d) { fade() });
+                // Append invisible rect used for mouse iff
+                if (enable_hover)
+                    tier_group.append("rect")
+                        .attr("class", "smash_tier_entry_hover")
+                        .attr("x", 0)
+                        .attr("y", entry_y - 11)
+                        .attr("width", tier_width)
+                        .attr("height", tier_entry_height + 1)
+                        .attr("id", character_name)
+                        .on("mouseover", function(d) { highlight(this.id) })
+                        .on("mouseout", function(d) { fade() });
             }
 
             // Slide tier_y down for next tier entry
             tier_y = tier_y + tier_height + tier_y_pad;
         }
 
-        console.log(tier_list);
-        console.log(tier_list.date);
         tier_list_group.append("text")
             .attr("class", "smash_tier_date")
             .attr("x", tier_width * .5)
