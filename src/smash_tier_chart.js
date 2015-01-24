@@ -39,7 +39,7 @@ function build_smash_tiers(select_target, platform, tier_dates, bounds) {
     var enable_hover = tier_dates.length != 1;
 
     // Spacing data
-    var tier_width = 73;
+    var tier_width = bounds.tier.width;
 
     var tier_x_whitespace = total_width - (tier_width * tier_lists.length);
     var tier_x_pad = 5;
