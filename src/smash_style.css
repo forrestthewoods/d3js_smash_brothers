@@ -40,7 +40,14 @@ Used by smash_rankings_chart.js
     pointer-events: none; /* prevents cursor from interactive with text element */
 }
 
-.smash_tier_entry {
+.smash_tier_entry  {
+    font-family: 'Tahoma', 'Helvetica', sans-serif;
+    font-size: 8.5pt;
+    pointer-events: none; /* prevents cursor from interactive with text element */
+    transition: opacity .5s ease-out;
+}
+
+.smash_tier_date {
     font-family: 'Tahoma', 'Helvetica', sans-serif;
     font-size: 8.5pt;
     pointer-events: none; /* prevents cursor from interactive with text element */

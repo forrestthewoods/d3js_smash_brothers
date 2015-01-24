@@ -166,9 +166,9 @@ function build_smash_tiers(select_target, platform, tier_dates, bounds) {
         console.log(tier_list);
         console.log(tier_list.date);
         tier_list_group.append("text")
-            .attr("class", "smash_tier_entry")
+            .attr("class", "smash_tier_date")
             .attr("x", tier_width * .5)
-            .attr("y", bounds.plot.height + 20)
+            .attr("y", bounds.plot.height + 16)
             .style("text-anchor", "middle")
             .text(function(d) { return tier_list.date });
 
