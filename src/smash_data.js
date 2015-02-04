@@ -194,7 +194,7 @@ var smash_data = {
                     { "title": "A", "range": [5, 7], "color": "orange"},
                     { "title": "B", "range": [8, 8], "color": "cyan"},
                     { "title": "C", "range": [9, 11], "color": "green"},
-                    { "title": "D", "range": [12, 15], "color": "yellow"},
+                    { "title": "D", "range": [12, 15], "color": "olive"},
                     { "title": "E", "range": [16, 17], "color": "blue"},
                     { "title": "F", "range": [18, 22], "color": "purple"},
                     { "title": "G", "range": [23, 26], "color": "pink"}
@@ -284,9 +284,9 @@ var smash_data = {
                 "date":"Sept '08",
                 "tiers": [
                     { "title": "Top", "range": [1,6], "color":"red" },
-                    { "title": "High", "range": [7,16], "color":"cyan" },
-                    { "title": "Middle", "range": [17,26], "color":"green" },
-                    { "title": "Low", "range": [27,37], "color":"blue" }
+                    { "title": "High", "range": [7,16], "color":"olive" },
+                    { "title": "Middle", "range": [17,26], "color":"blue" },
+                    { "title": "Low", "range": [27,37], "color":"pink" }
                 ]
             },
 
@@ -294,8 +294,8 @@ var smash_data = {
                 "date":"Jan '09",
                 "tiers": [
                     { "title": "SS", "range": [1,1], "color":"red" },
-                    { "title": "S", "range": [2,2], "color":"orange" },
-                    { "title": "A", "range": [3,7], "color":"cyan" },
+                    { "title": "S", "range": [2,2], "color":"light-red" },
+                    { "title": "A", "range": [3,7], "color":"orange" },
                     { "title": "B", "range": [8,11], "color":"olive" },
                     { "title": "C", "range": [12,15], "color":"green" },
                     { "title": "D", "range": [16,20], "color":"cyan" },
@@ -310,11 +310,11 @@ var smash_data = {
                 "tiers": [
                     { "title": "S", "range": [1,6], "color":"red" },
                     { "title": "A", "range": [7,13], "color":"orange" },
-                    { "title": "B", "range": [14,18], "color":"cyan" },
-                    { "title": "C", "range": [19,24], "color":"green" },
-                    { "title": "D", "range": [25,28], "color":"cyan" },
-                    { "title": "E", "range": [29,33], "color":"blue" },
-                    { "title": "F", "range": [34,37], "color":"purple" }
+                    { "title": "B", "range": [14,18], "color":"green" },
+                    { "title": "C", "range": [19,24], "color":"cyan" },
+                    { "title": "D", "range": [25,28], "color":"blue" },
+                    { "title": "E", "range": [29,33], "color":"purple" },
+                    { "title": "F", "range": [34,37], "color":"pink" }
                 ]
             },
 
@@ -323,7 +323,7 @@ var smash_data = {
                 "tiers": [
                     { "title": "S", "range": [1,1], "color":"red" },
                     { "title": "A", "range": [2,7], "color":"orange" },
-                    { "title": "B", "range": [8,12], "color":"cyan" },
+                    { "title": "B", "range": [8,12], "color":"olive" },
                     { "title": "C", "range": [13,17], "color":"green" },
                     { "title": "D", "range": [18,22], "color":"cyan" },
                     { "title": "E", "range": [23,27], "color":"blue" },
@@ -337,7 +337,7 @@ var smash_data = {
                 "tiers": [
                     { "title": "S", "range": [1,1], "color":"red" },
                     { "title": "A", "range": [2,7], "color":"orange" },
-                    { "title": "B", "range": [8,13], "color":"cyan" },
+                    { "title": "B", "range": [8,13], "color":"olive" },
                     { "title": "C", "range": [14,20], "color":"green" },
                     { "title": "D", "range": [21,28], "color":"cyan" },
                     { "title": "E", "range": [29,32], "color":"blue" },
@@ -351,7 +351,7 @@ var smash_data = {
                 "tiers": [
                     { "title": "S", "range": [1,1], "color":"red" },
                     { "title": "A", "range": [2,4], "color":"orange" },
-                    { "title": "B", "range": [5,9], "color":"cyan" },
+                    { "title": "B", "range": [5,9], "color":"bronze" },
                     { "title": "C", "range": [10,14], "color":"olive" },
                     { "title": "D", "range": [15,17], "color":"green" },
                     { "title": "E", "range": [18,22], "color":"cyan" },
@@ -366,7 +366,7 @@ var smash_data = {
                 "tiers": [
                     { "title": "S", "range": [1,1], "color":"red" },
                     { "title": "A", "range": [2,5], "color":"orange" },
-                    { "title": "B", "range": [6,9], "color":"cyan" },
+                    { "title": "B", "range": [6,9], "color":"bronze" },
                     { "title": "C", "range": [10,13], "color":"olive" },
                     { "title": "D", "range": [14,18], "color":"green" },
                     { "title": "E", "range": [19,25], "color":"cyan" },
@@ -380,13 +380,13 @@ var smash_data = {
                 "date":"April '13",
                 "tiers":[
                     { "title": "SS", "range": [1,1], "color":"red" },
-                    { "title": "S", "range": [2,2], "color":"orange" },
+                    { "title": "S", "range": [2,2], "color":"light-red" },
                     { "title": "A+", "range": [3,4], "color":"light-orange" },
-                    { "title": "A-", "range": [5,7], "color":"cyan" },
+                    { "title": "A-", "range": [5,7], "color":"bronze" },
                     { "title": "B", "range": [8,10], "color":"olive" },
                     { "title": "C+", "range": [11,13], "color":"green" },
                     { "title": "C", "range": [14,17], "color":"cyan" },
-                    { "title": "C-", "range": [18,19], "color":"ice-blue" },
+                    { "title": "C-", "range": [18,19], "color":"indigo" },
                     { "title": "D", "range": [20,27], "color":"blue" },
                     { "title": "E", "range": [28,30], "color":"purple" },
                     { "title": "F", "range": [31,38], "color":"pink" }

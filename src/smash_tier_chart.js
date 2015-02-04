@@ -18,14 +18,17 @@ function build_smash_tiers(select_target, platform, tier_dates, bounds) {
         "red" : { "dark" : "#d15f4c", "medium" : "#ff8a76", "light" : "#f8b1a5", "text":"#3f1109" },
         "orange" : { "dark" : "#c48847", "medium" : "#f4b761", "light" : "#ffd191", "text":"#4d3105" },
         "light-orange" : { "dark" : "#c48847", "medium" : "#f4b761", "light" : "#ffd191", "text":"#4d3105" },
-        "yellow" : { "dark" : "#8e973f", "medium" : "#EBF38E", "light" : "#f3ffb9", "text":"#313a0f" },
         "olive" : { "dark" : "#8e973f", "medium" : "#EBF38E", "light" : "#f3ffb9", "text":"#313a0f" },
         "green" : { "dark" : "#64aa78", "medium" : "#B3F5B5", "light" : "#c7f9d6", "text":"#274225" },
-        "cyan" : { "dark" : "#72D4D2", "medium" : "#B5F6F7", "light" : "#E3FFFF", "text":"#154D4C" },
+        "cyan" : { "dark" : "#54BFBD", "medium" : "#B5F6F7", "light" : "#E3FFFF", "text":"#154D4C" },
         "blue" : { "dark" : "#527BAB", "medium" : "#B0D5FF", "light" : "#DBECFF", "text":"#183748" },
         "ice-blue" : { "dark" : "#527BAB", "medium" : "#B0D5FF", "light" : "#DBECFF", "text":"#183748" },
         "purple" : { "dark" : "#9166B5", "medium" : "#DBC3F2", "light" : "#EEE3FF", "text":"#52255B" },
-        "pink" : { "dark" : "#E6AAC8", "medium" : "#FFCFE6", "light" : "#FFF0F7", "text":"#610C36" }
+        "pink" : { "dark" : "#E6AAC8", "medium" : "#FFCFE6", "light" : "#FFF0F7", "text":"#610C36" },
+        
+        "light-red" : { "dark" : "#EB8444", "medium" : "#FFBB91", "light" : "#FFDBC4", "text":"#754324" },
+        "bronze" : { "dark" : "#ADA11D", "medium" : "#F7F3C1", "light" : "#FFFCD6", "text":"#696433" },
+        "indigo" : { "dark" : "#4582A3", "medium" : "#D1EFFF", "light" : "#E3F5FF", "text":"#1C5370" }
     };
 
     // Data for tier lists
