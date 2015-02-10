@@ -16,29 +16,16 @@ function build_smash_tiers(select_target, platform, tier_dates, bounds) {
     // For converting textual colors in smash data to actual RGBs
     var tier_color_map = {
         "red" : { "dark" : "#d15f4c", "medium" : "#ff8a76", "light" : "#f8b1a5", "text":"#3f1109" },
-        "orange" : { "dark" : "#c48847", "medium" : "#f4b761", "light" : "#ffd191", "text":"#4d3105" },
-        "light-orange" : { "dark" : "#c48847", "medium" : "#f4b761", "light" : "#ffd191", "text":"#4d3105" },
-        "olive" : { "dark" : "#8e973f", "medium" : "#EBF38E", "light" : "#f3ffb9", "text":"#313a0f" },
-        
-        "green" : { "dark" : "#64aa78", "medium" : "#B3F5B5", "light" : "#c7f9d6", "text":"#274225" },
-        //"green" : { "dark" : "#a4d96a", "medium" : "#cbf0a3", "light" : "#eaffd2", "text":"#416a14" },
-        
-        //"cyan" : { "dark" : "#54BFBD", "medium" : "#B5F6F7", "light" : "#E3FFFF", "text":"#154D4C" },
-        "cyan" : { "dark" : "#57a492", "medium" : "#97f3de", "light" : "#c9fbf0", "text":"#266758" },
-        
-        //"blue" : { "dark" : "#527BAB", "medium" : "#B0D5FF", "light" : "#DBECFF", "text":"#183748" },
-        "blue" : { "dark" : "#80a3dc", "medium" : "#c6d8f5", "light" : "#e1edff", "text":"#266758" },
-        
-        "ice-blue" : { "dark" : "#527BAB", "medium" : "#B0D5FF", "light" : "#DBECFF", "text":"#183748" },
-        "purple" : { "dark" : "#9166B5", "medium" : "#DBC3F2", "light" : "#EEE3FF", "text":"#52255B" },
-        "pink" : { "dark" : "#E6AAC8", "medium" : "#FFCFE6", "light" : "#FFF0F7", "text":"#610C36" },
-        
         "light-red" : { "dark" : "#EB8444", "medium" : "#FFBB91", "light" : "#FFDBC4", "text":"#754324" },
+        "orange" : { "dark" : "#c48847", "medium" : "#f4b761", "light" : "#ffd191", "text":"#4d3105" },
         "bronze" : { "dark" : "#ADA11D", "medium" : "#F7F3C1", "light" : "#FFFCD6", "text":"#696433" },
-        
-        //"indigo" : { "dark" : "#4582A3", "medium" : "#D1EFFF", "light" : "#E3F5FF", "text":"#1C5370" }
-        //"indigo" : { "dark" : "#53b3d1", "medium" : "#a9e5f7", "light" : "#d2f4fe", "text":"#1e647b" }
-        "indigo" : { "dark" : "#a4d96a", "medium" : "#cbf0a3", "light" : "#eaffd2", "text":"#416a14" }
+        "olive" : { "dark" : "#8e973f", "medium" : "#EBF38E", "light" : "#f3ffb9", "text":"#313a0f" },
+        "green-yellow" : { "dark" : "#a4d96a", "medium" : "#cbf0a3", "light" : "#eaffd2", "text":"#416a14" },
+        "green" : { "dark" : "#64aa78", "medium" : "#B3F5B5", "light" : "#c7f9d6", "text":"#274225" },
+        "ice-blue" : { "dark" : "#57a492", "medium" : "#97f3de", "light" : "#c9fbf0", "text":"#266758" },
+        "blueberry" : { "dark" : "#80a3dc", "medium" : "#c6d8f5", "light" : "#e1edff", "text":"#266758" },
+        "purple" : { "dark" : "#9166B5", "medium" : "#DBC3F2", "light" : "#EEE3FF", "text":"#52255B" },
+        "pink" : { "dark" : "#E6AAC8", "medium" : "#FFCFE6", "light" : "#FFF0F7", "text":"#610C36" }
     };
 
     // Data for tier lists
